@@ -1,0 +1,166 @@
+@media (max-aspect-ratio: 1/1) {
+  /* ----------------------  HEADER  ---------------------- */
+  #main-title {
+    color: rgb(255,255,255);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Autour One', cursive;
+    font-size: 60px;
+  }
+
+  #sub-title {
+    color: rgb(255,255,255);
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Autour One', cursive;
+    font-size: 20px;
+  }
+
+  /* ----------------------  SEARCH BAR  ---------------------- */
+  #search-bar {
+    height: 75px;
+    background-color: rgb(78,76,76);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  /* ----------------------  NAVIGATION  ---------------------- */
+  #hamburger-icon {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+  }
+
+  /*************************************************************************************************************************************************************
+  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!                   TO FIX                             !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  *************************************************************************************************************************************************************/
+  #hamburger-icon:active + nav {
+    display: block;
+    z-index: 3;
+  }
+
+  
+  nav {
+    position: absolute;
+    top: 0;
+    background-color: rgb(234,195,168);
+    width: 40vw;
+    border-radius: 0 20px 20px 0;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    height: calc(100vh - 30px);
+
+    display: none;
+  }
+
+  nav > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: calc(100vh - 30px - 25px);
+    font-size: 20px;
+  }
+
+
+  /* ----------------------  POST  ---------------------- */
+  .post {
+    background-color: rgb(234,195,168);
+    width: 85vw;
+    height: 300px;
+    border-radius: 20px;
+    margin: 20px auto 20px auto;
+    padding: 0px 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: relative;
+  }
+
+  .post > .date {
+    text-align: center;
+    width: 100px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .post > .main {
+    display: flex;
+    flex-direction: row;
+    flex: 4;
+  }
+
+ 
+  .post > .main > .text {
+    margin-left: 20px;
+    height: 50%;
+    padding-top: 30px;
+  }
+
+  .post > .main > .text > h3 {
+    padding-top: 10px;
+    font-size: 30px;
+  }
+
+  .post > .main > .text > .description {
+    position: absolute;
+    top: 60%;
+    height: 20%;
+    z-index: 2;
+    left: 30px;
+    margin: 0;
+    padding: 0;
+    width: 80vw;
+    font-size: 20px;
+  }
+
+  .post > .main > .icon {
+    border-radius: 100%;
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    background-color: rgb(36,36,36);
+    margin-top: 20px;
+  }
+
+  .post > .location {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .post > .number-stars {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .post > .number-stars > img:nth-of-type(1) {
+    width: 70px;
+    height: 70px;
+  } 
+
+  .post > .number-stars > img:nth-of-type(2) {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 20px;
+  }
+}

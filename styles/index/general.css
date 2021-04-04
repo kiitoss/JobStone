@@ -1,3 +1,4 @@
+
 /* ----------------------  GENERAL  ---------------------- */
 /* Suppression des marges par defaut des elements */
 * {
@@ -21,11 +22,11 @@ hr {
 /* Suppression du style par defaut des boutons */
 button {
   background: none;
-	color: inherit;
-	border: none;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 body {
@@ -62,38 +63,8 @@ header {
   color: rgb(36,36,36);
 }
 
-#main-title {
-  color: rgb(255,255,255);
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-family: 'Autour One', cursive;
-  font-size: 96px;
-}
-
-#sub-title {
-  color: rgb(255,255,255);
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-family: 'Autour One', cursive;
-  font-size: 20px;
-}
-
 
 /* ----------------------  SEARCH BAR  ---------------------- */
-#search-bar {
-  height: 75px;
-  background-color: rgb(78,76,76);
-  padding-left: 25vw;
-  display: flex;
-  align-items: center;
-}
-
 .search-bar-input-container {
   margin-left: 5vw;
   width: 300px;
@@ -148,17 +119,6 @@ header {
 
 
 /* ----------------------  NAVIGATION  ---------------------- */
-nav {
-  position: absolute;
-  background-color: rgb(234,195,168);
-  width: 20vw;
-  margin-left: 5vw;
-  border-radius: 20px;
-  padding-bottom: 15px;
-  padding-top: 15px;
-  margin-top: -100px;
-}
-
 nav > h2 {
   padding-left: 15px;
   padding-bottom: 10px;
@@ -166,10 +126,6 @@ nav > h2 {
 
 nav * {
   color: rgb(36,36,36);
-}
-
-nav > ul {
-  list-style: none;
 }
 
 nav > ul > li {
@@ -185,58 +141,8 @@ nav > ul > li:hover {
 
 
 /* ----------------------  POST  ---------------------- */
-.post {
-  background-color: rgb(234,195,168);
-  width: max(67vw, min(1000px, 71vw));
-  height: 200px;
-  border-radius: 20px;
-  margin: 20px auto 20px 27vw;
-  padding: 0px 10px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-
-  position: relative;
-}
-
 .post * {
   color: rgb(36,36,36);
-}
-
-.post > .date {
-  text-align: center;
-  width: 100px;
-}
-
-.post > .main {
-  display: flex;
-  flex-direction: row;
-}
-
-.post > .main > .text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-left: 20px;
-}
-
-.post > .main > .icon {
-  border-radius: 100%;
-  width: 100px;
-  min-width: 100px;
-  height: 100px;
-  background-color: rgb(36,36,36);
-}
-
-.post > .number-stars {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px;
 }
 
 .post > .number-stars > p {
@@ -245,15 +151,3 @@ nav > ul > li:hover {
   font-size: 20px;
   font-family: 'Autour One', cursive;
 }
-
-.post > .number-stars > img:nth-of-type(1) {
-  width: 50px;
-  height: 50px;
-} 
-
-.post > .number-stars > img:nth-of-type(2) {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  right: 20px;
-} 
