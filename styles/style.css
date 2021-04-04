@@ -5,10 +5,17 @@
   padding: 0;
   user-select: none;
   font-family: 'Montserrat', sans-serif;
+  color: white;
 }
 
 *:focus {
   outline: none;
+}
+
+hr {
+  background-color: rgba(36,36,36,0.5);
+  border: none;
+  height: 2px;
 }
 
 /* Suppression du style par defaut des boutons */
@@ -53,7 +60,6 @@ header {
   top: 20px;
   right: 20px;
   color: rgb(36,36,36);
-  
 }
 
 #main-title {
@@ -91,7 +97,6 @@ header {
 .search-bar-input-container {
   margin-left: 5vw;
   width: 300px;
-  color: white;
   position: relative;
 }
 
@@ -110,7 +115,6 @@ header {
   padding-left: 10px;
   border: none;
   width: 300px;
-  color: white;
 }
 
 .search-bar-input-extension {
@@ -124,6 +128,7 @@ header {
   width: 310px;
   overflow: auto;
   font-size: 12px;
+  z-index: 2;
 }
 
 .search-bar-input-extension > li {
@@ -140,3 +145,115 @@ header {
   margin-left: 4vw;
   cursor: pointer;
 }
+
+
+/* ----------------------  NAVIGATION  ---------------------- */
+nav {
+  position: absolute;
+  background-color: rgb(234,195,168);
+  width: 20vw;
+  margin-left: 5vw;
+  border-radius: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-top: -100px;
+}
+
+nav > h2 {
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+
+nav * {
+  color: rgb(36,36,36);
+}
+
+nav > ul {
+  list-style: none;
+}
+
+nav > ul > li {
+  padding: 5px;
+  padding-left: 50px;
+  cursor: pointer;
+}
+
+nav > ul > li:hover {
+  background-color: rgb(36,36,36);
+  color: white;
+}
+
+
+/* ----------------------  POST  ---------------------- */
+.post {
+  background-color: rgb(234,195,168);
+  width: max(67vw, min(1000px, 71vw));
+  height: 200px;
+  border-radius: 20px;
+  margin: 20px auto 20px 27vw;
+  padding: 0px 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  position: relative;
+}
+
+.post * {
+  color: rgb(36,36,36);
+}
+
+.post > .date {
+  text-align: center;
+  width: 100px;
+}
+
+.post > .main {
+  display: flex;
+  flex-direction: row;
+}
+
+.post > .main > .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 20px;
+}
+
+.post > .main > .icon {
+  border-radius: 100%;
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+  background-color: rgb(36,36,36);
+}
+
+.post > .number-stars {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.post > .number-stars > p {
+  margin-right: 5px;
+  text-align: right;
+  font-size: 20px;
+  font-family: 'Autour One', cursive;
+}
+
+.post > .number-stars > img:nth-of-type(1) {
+  width: 50px;
+  height: 50px;
+} 
+
+.post > .number-stars > img:nth-of-type(2) {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+} 
