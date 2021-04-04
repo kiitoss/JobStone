@@ -2,9 +2,37 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
   <title>Job'Stone</title>
 </head>
 <body>
-  
+  <header>
+    <button id="ask-service">demander un service</button>
+    <h1 id="main-title">Job'Stone</h1>
+    <h2 id="sub-title">Let's share the best !</h2>
+    <button id="profile-icon"></button>
+  </header>
+
+  <div id=search-bar>
+    <div class="search-bar-input-container">
+      <input class="search-bar-input" placeholder="Catégorie">
+      <ul class="search-bar-input-extension">
+        <li>Informatique</li>
+        <li>Jardin</li>
+        <li>Maison</li>
+      </ul>
+    </div>
+    <div class="search-bar-input-container">
+      <input class="search-bar-input" placeholder="Ville ou CP">
+      <ul class="search-bar-input-extension">
+        <li>Paris</li>
+        <li>Lyon</li>
+        <li>Marseille</li>
+      </ul>
+    </div>
+    <img id="search-icon" src="res/icons/search.svg" alt="icone de recherche">
+  </div>
 </body>
 </html>
