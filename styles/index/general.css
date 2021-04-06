@@ -160,7 +160,8 @@ nav > ul > li:hover {
 
 
 
-/* ----------------------  NOT SPLIT  ---------------------- */
+/* ----------------------  MODAL  ---------------------- */
+/* ------------  PAGE  ------------ */
 #service-modal {
   width: 100%;
   height: 100%;
@@ -189,6 +190,7 @@ nav > ul > li:hover {
   color: rgb(36,36,36);
 }
 
+/* ------------  HEADER  ------------ */
 #service-date {
   position: absolute;
   top: 0;
@@ -202,6 +204,17 @@ nav > ul > li:hover {
   font-size: 55px;
 }
 
+#close-service-btn {
+  position: absolute;
+  top: 0;
+  transform: translateY(110%);
+  right: 2vw;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* ------------  DESCRIPTION  ------------ */
 #service > h2, #service-details > h2 {
   margin-top: 50px;
   font-size: 35px;
@@ -213,6 +226,14 @@ nav > ul > li:hover {
   height: 20%;
 }
 
+/* ------------  DETAILS + APPLY CONTAINER ------------ */
+#service-infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ------------  DETAILS  ------------ */
 #service-details > ul {
   display: flex;
   flex-flow: column wrap;
@@ -235,20 +256,10 @@ nav > ul > li:hover {
   height: 50px;
 }
 
-
-
-#service-infos {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-
-
+/* ------------  APPLY  ------------ */
 #service-apply {
   width: 40%;
 }
-
 
 #service-apply > .number-stars {
   display: flex;
@@ -292,14 +303,4 @@ nav > ul > li:hover {
   color: rgb(234,195,168);
   font-size: 37px;
   border-radius: 25px;
-}
-
-#close-service-btn {
-  position: absolute;
-  top: 0;
-  transform: translateY(110%);
-  right: 2vw;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
 }
