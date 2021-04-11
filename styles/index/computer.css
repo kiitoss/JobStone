@@ -115,4 +115,63 @@
     position: absolute;
     right: 20px;
   }
+
+
+
+  /* ----------------------  MODAL  ---------------------- */
+  /* ------------  DESCRIPTION  ------------ */
+  #service > h2, #service-details > h2 {
+    margin-top: 50px;
+    font-size: 35px;
+  }
+
+  #service-description {
+    margin-top: 10px;
+    font-size: 28px;
+    height: 20%;
+  }
+
+  /* ------------  DETAILS + APPLY CONTAINER ------------ */
+  #service-infos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  /* ------------  DETAILS  ------------ */
+  #service-details > ul {
+    display: flex;
+    flex-flow: column wrap;
+    width: 43%;
+    max-height: 250px;
+  }
+
+  .service-detail {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+    align-items: center;
+    overflow: hidden;
+    height: 50px;
+    margin-top: 20px;
+  }
+
+  /* ------------  APPLY  ------------ */
+  #service-apply {
+    width: 40%;
+  }
+
+  #service-apply > .number-stars {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #service-apply > button {
+    width: 100%;
+    height: 80px;
+    background-color: rgb(34,34,34);
+    color: rgb(234,195,168);
+    font-size: 37px;
+    border-radius: 25px;
+  }
 }

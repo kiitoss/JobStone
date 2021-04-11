@@ -163,4 +163,68 @@
     position: absolute;
     right: 20px;
   }
+
+
+
+/* ----------------------  MODAL  ---------------------- */
+  /* ------------  DESCRIPTION  ------------ */
+  #service > h2, #service-details > h2 {
+    margin-top: 80px;
+    font-size: 45px;
+  }
+
+  #service-description {
+    margin-top: 10px;
+    font-size: 36px;
+    height: 50%;
+  }
+
+  /* ------------  DETAILS + APPLY CONTAINER ------------ */
+  #service-infos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* ------------  DETAILS  ------------ */
+  #service-details > ul {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+    max-height: 220px;
+  }
+
+  .service-detail {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    overflow: hidden;
+    height: 70px;
+  }
+
+
+  /* ------------  APPLY  ------------ */
+  #service-apply {
+    width: 100%;
+    margin-top: 50px;
+  }
+
+  #service-apply > .number-stars {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+  }
+
+  #service-apply > button {
+    width: 50%;
+    height: 80px;
+    background-color: rgb(34,34,34);
+    color: rgb(234,195,168);
+    font-size: 37px;
+    border-radius: 25px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
 }
