@@ -7,6 +7,7 @@
   font-family: 'Montserrat', sans-serif;
   color: white;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 h3, p {
@@ -15,6 +16,7 @@ h3, p {
 
 *:focus {
   outline: none;
+  background: red;
 }
 
 hr {
@@ -170,7 +172,7 @@ nav > ul > li:hover {
   left: 0;
   background-color: rgba(36,36,36, 0.9);
   z-index: 4;
-  /* display: none; */
+  display: none;
 }
 
 #service {
