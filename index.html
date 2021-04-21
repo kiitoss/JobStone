@@ -5,18 +5,21 @@
   <link rel="stylesheet" href="styles/index/general.css">
   <link rel="stylesheet" href="styles/index/computer.css">
   <link rel="stylesheet" href="styles/index/phone.css">
+  <link rel="stylesheet" href="styles/sign/sign-in.css">
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
   <title>Job'Stone</title>
 </head>
 <body>
+
   <header>
     <button id="ask-service">demander un service</button>
     <h1 id="main-title">Job'Stone</h1>
     <h2 id="sub-title">Let's share the best !</h2>
-    <button id="profile-icon"></button>
+   <button onclick="openform()" id="profile-icon" >Connexion</button>
   </header>
 
+	
   <div id=search-bar>
     <div class="search-bar-input-container">
       <input class="search-bar-input" placeholder="Catégorie">
@@ -202,5 +205,51 @@
       <img id="close-service-btn" src="res/icons/close.svg" alt="iconde de fermeture">
     </div>
   </div>
+
+	<div id="Sign" class="Sign-In">
+		<div class="form-content">
+			<span class="close">&times;</span>
+			<form action="#">
+				<div class="container">
+					<h1>Se connecter</h1>
+					
+					<hr>
+
+					<label><b>Email</b></label><br>
+					<input type="text" placeholder="Entrer Email" id="email" required><br>
+
+					<label ><b>Mot de passe</b></label>
+					<input type="password" placeholder="Entrer Mot de passe" id="pswd" required>
+
+					<hr>
+			
+					<button type="submit" class="signin_btn">Connexion</button>
+				</div>
+			  
+			  <div class="container signup">
+				<p>Vous êtes nouveau ? Creer un compte <a href="#">S'inscrire</a>.</p>
+			  </div>
+			</form>			
+		</div>
+	</div>
+	<script>
+		var filter = document.getElementById("Sign");
+		var close = document.getElementsByClassName("close")[0];
+
+		function openform() {
+			filter.style.display = "block";
+		}
+
+		close.onclick = function() {
+			filter.style.display = "none";
+		}
+
+		window.onclick = function(event) {
+			if (event.target == filter) {
+				filter.style.display = "none";
+			}
+		}
+	</script>
 </body>
+
 </html>
