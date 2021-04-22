@@ -1,4 +1,8 @@
-.Sign-In {
+
+/* ----------------------  SIGN-IN  ---------------------- */
+/* ------------  MODAL FORM ------------ */
+
+.modal-sign-in {
   display: none; 
   position: fixed; 
   padding-top: 100px; 
@@ -16,11 +20,12 @@
   background-color: #242424;
   margin: auto;
   padding: 20px;
-  border: 10px solid #888;
+  border: 10px ridge #eac3a8;
   width: 50%;
   animation-name: animatetop;
   animation-duration: 0.4s
 }
+
 @keyframes animatetop {
   from {top:-1000px; opacity:0}
   to {top:0; opacity:1}
@@ -34,19 +39,16 @@
 }
 
 .close:hover,
-
 .close:focus {
-  color: black;
+  color: red;
   cursor: pointer;
 }
 
-/* Add padding to containers */
 .container {
   padding: 16px;
   background-color: #242424;
 }
 
-/* Full-width input fields */
 input[type=text], input[type=password] {
   width: 90%;
   padding: 15px;
@@ -54,14 +56,14 @@ input[type=text], input[type=password] {
   display: inline-block;
   border: none;
   background: #ddd;
-  color:black;
+  color:#242424;
 }
 
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ccc;
 }
 
-hr {
+.hr-form {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
@@ -81,7 +83,8 @@ hr {
   opacity: 1;
 }
 
-a {
+/* *:focus dans general background: red; */
+a{
   color: dodgerblue;
 }
 

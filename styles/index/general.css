@@ -16,7 +16,7 @@ h3, p {
 
 *:focus {
   outline: none;
-  background: red;
+  /* background: red; */
 }
 
 hr {
@@ -159,7 +159,11 @@ nav > ul > li:hover {
   font-family: 'Autour One', cursive;
 }
 
+.post:hover{
+box-shadow: 0 0 48px 0 rgb(167,167,167,0.25);
 
+
+}
 
 
 /* ----------------------  MODAL  ---------------------- */
