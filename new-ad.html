@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="styles/index/general.css">
+		<link rel="stylesheet" href="styles/index/computer.css">
+		<link rel="stylesheet" href="styles/index/phone.css">
+		<link rel="stylesheet" href="styles/member/service/ask-service.css">
+		<link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+		<title>Job'Stone</title>
+	</head>
+	<body>
+
+
+		<header>
+			<button id="ask-service">demander un service</button>
+			<h1 id="main-title">Job'Stone</h1>
+			<h2 id="sub-title">Let's share the best !</h2>
+			<a href="index.html"><button id="profile-icon" >Connexion</button></a>
+		</header>
+		
+		<hr class="hr-form">
+		
+			
+		<div class="form-content">
+			
+			<form action="#">
+				<div class="container service-form">
+					<h1>Demander un service </h1>
+					<p>De quoi avez vous besoin ?</p><br>
+					<hr class="hr-form">
+					
+					
+					
+					<label><b>Titre de l'annonce</b></label><br>
+					<input type="text" placeholder="Titre de l'annonce" id="title-service" required><br>
+					
+					<label><b>Catégorie</b></label><br>
+					<div class="search-dropdown">
+						<select class="dropdown-container">
+								<optgroup label="Informatique">
+								<option>Bricolage</option>
+								<option>Jardinage</option>
+								</optgroup>
+								<optgroup label="Mecanique">
+								<option>Déménagement</option>
+								<option>Automobile</option>
+								</optgroup>
+								<optgroup label="Loisir">
+								<option>Enfants</option>
+								<option>Bricolage</option>
+								<option>Jardinage</option>
+								</optgroup>
+								<option>Déménagement</option>
+								<option>Automobile</option>
+						</select>
+					</div>
+					
+					<br>
+					
+					<label><b>Date de réalisation</b></label><br>
+					<div class="realisation-date">
+						<br><label><h5>Début</h5>
+							<input type="date" placeholder="Date début" id="start-date" >
+						</label>
+						
+						<br>
+						
+						<label><h5>Fin</h5>
+							<input type="date" placeholder="Date fin" id="deadline" >
+						</label>
+						
+						<br>
+					</div>
+					
+					<label><b>Lieu</b></label><br>
+					<div class="location">
+						<input type="number" placeholder="Code postale" id="code-postal" required>
+						<input type="text" placeholder="Ville" id="city" required>
+						<input type="text" placeholder="Rue" id="street" required>
+					</div>
+					
+					<label><b>Description de l'annonce</b></label><br>
+					<textarea type="message" id="message" rows="6" maxlength="2000" required required></textarea>
+					
+					<button type="submit" class="submit-btn">Poster ma demande</button>
+				</div>
+			  
+			</form>			
+		</div>
+
+	</body>
+</html>

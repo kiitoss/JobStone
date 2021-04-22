@@ -1,0 +1,47 @@
+.form-content{
+  margin: auto;
+  padding: 20px;
+  width: 50%;
+}
+.container {
+  padding: 20px;
+}
+
+input[type=text], input[type=password] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #ddd;
+  color:#242424;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ccc;
+}
+
+.signup-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.signup-btn:hover {
+  opacity: 1;
+}
+
+/* *:focus dans general background: red; */
+a{
+  color: dodgerblue;
+}
+
+.signup {
+  text-align: center;
+}
+
