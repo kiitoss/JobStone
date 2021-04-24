@@ -1,0 +1,51 @@
+
+/* ----------------------  PARAMETRE  ---------------------- */
+/* ------------ FORM ------------ */
+.form-content{
+  margin: auto;
+  padding: 20px;
+  width: 50%;
+}
+.container {
+  padding: 20px;
+  border: 10px ridge rgb(234,195,168);
+  background:rgb(47 47 47);
+}
+.gender, .contact, .location{
+  padding:20px;
+}
+.row-information, .location{
+  display:flex;
+}
+.firstname, .lastname, .birth-date, .phone-number, .mail{
+  width:100%;
+  margin: 0 auto;
+}
+input[type=text], input[type=number],input[type=date] {
+  width: 85%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background: white;
+  color:#242424;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, input[type=date]:focus, #message:focus{
+  background-color: #ddd;
+}
+
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.submit-btn:hover {
+  opacity: 1;
+}

@@ -13,7 +13,7 @@
 <body>
 
 	<header>
-		<a href="new-ad.html"><button id="ask-service">demander un service</button></a>
+		<a href="ask-service.html"><button id="ask-service">demander un service</button></a>
 		<h1 id="main-title">Job'Stone</h1>
 		<h2 id="sub-title">Let's share the best !</h2>
 		<a href="index.html"><button id="profile-icon" >Connexion</button></a>
@@ -27,13 +27,46 @@
 			<div class="container sign-up">
 				<h1>Inscription</h1>
 				<hr class="hr-form">
+				<div class="header-information">
+					<div class="row-information">
+						<div class="lastname">
+							<label><b>Nom</b></label><br>
+							<input type="text" placeholder="Nom" id="lastname" required><br>
+						</div>
+						
+						<div class="firstname">
+							<label><b>Prénom</b></label><br>
+							<input type="text" placeholder="Prénom" id="firstname" required><br>
+						</div>
+					</div>
+					
+					<label><b>Nom d'utilisateur</b></label><br>
+					<input type="text" placeholder="Nom d'utilisateur" id="pseudo" required><br>
+					
+					<div class="row-information">
+						<div class="phone-number">
+							<label><b>Téléphone</b><label>
+							<input type="number" placeholder="Num Téléphone" id="phone-number">
+						</div>
+						
+						<div class="mail">
+							<label><b>Email</b></label><br>
+							<input type="text" placeholder="Entrer Email" id="email" required>
+						</div>
+					</div>
+					
+					<label><b>Adresse<b></label>
+					<div class="location">
+						<input type="number" placeholder="Code postale" id="code-postal" required>
+						<input type="text" placeholder="Ville" id="city" required>
+						<input type="text" placeholder="Rue" id="street" required>
+					</div>
+					
+					
+				</div>
 
-				<label><b>Nom d'utilisateur</b></label><br>
-				<input type="text" placeholder="Nom d'utilisateur" id="pseudo" required><br>
 				
-				<label><b>Email</b></label><br>
-				<input type="text" placeholder="Entrer Email" id="email" required><br>
-
+				
 				<label ><b>Mot de passe</b></label><br>
 				<input type="password" placeholder="Entrer Mot de passe" id="pswd" required><br>
 
@@ -43,10 +76,10 @@
 				<hr class = "hr-form">
 		
 				<button type="submit" class="signup-btn">Connexion</button>
-			</div>
 		  
-		  <div class="container signup">
-			<p>Vous avez déjà un compte ? <a href="index.html">Connexion</a>.</p>
+				<div class="signup">
+					<p>Vous avez déjà un compte ? <a href="index.html">Connexion</a>.</p>
+				</div>
 		  </div>
 		</form>			
 	</div>
