@@ -11,18 +11,20 @@
 }
 
 .edit_btn{
-  border: 1px solid blue;
+  border: 1px solid dodgerblue;
   padding: 0 15px;
-  color: blue;
+  color: dodgerblue;
   border-radius:10%;
   opacity: 0.9;
+  font-weight:bold;
 }
 .remove_btn{
-  border: 1px solid red;
+  border: 1px solid #f3172d;
   padding: 0 15px;
-  color:red;
+  color:#f3172d;
   border-radius:10%;
   opacity: 0.9;
+  font-weight:bold;
 }
 
 .remove_btn:hover{
@@ -94,8 +96,17 @@ input[type=text]{
   background: #ddd;
   color:#242424;
 }
+input[type=date]{
+  width: 25%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #ddd;
+  color:#242424;
+}
 
-input[type=text]:focus{
+input[type=text]:focus, input[type=date]:focus{
   background-color: #ccc;
 }
 
@@ -116,7 +127,9 @@ input[type=text]:focus{
 
 
 #message{
- height:auto;
+  min-height:150px;
+  max-height:205px;
+  height:auto;
   padding: 15px;
   margin: 5px 10px 22px 0;
   color:#242424;
