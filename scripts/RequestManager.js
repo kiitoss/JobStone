@@ -7,6 +7,13 @@ class RequestManager {
 
 
 
+class Applier {
+  constructor(idPost, idUser) {
+    this.idPost = idPost;
+    this.idUser = idUser;
+  }
+}
+
 
 
 
@@ -29,13 +36,23 @@ function generate_random_category() {
 }
 
 function generate_random_post() {
-  return new Post(id_post++, Math.floor(Math.random() * 5), new Date(), TI[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 5), new Date(), new Date(), Math.floor(Math.random() * 90)+10, CI[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
+  return new Post(id_post++, (id_post == 1) ? 1 : id_post-1, new Date(), TI[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 5), new Date(), new Date(), Math.floor(Math.random() * 90)+10, CI[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
+}
+
+function generate_random_appliers() {
+  return new Applier(Math.floor(Math.random() * 5), Math.floor(Math.random() * 5));
 }
 
 const USERS = [generate_random_user(), generate_random_user(), generate_random_user(), generate_random_user(), generate_random_user(), generate_random_user(), generate_random_user()];
 const CATEGORIES = [generate_random_category(), generate_random_category(), generate_random_category(), generate_random_category(), generate_random_category(), generate_random_category()];
 const POSTS = [generate_random_post(), generate_random_post(), generate_random_post(), generate_random_post(), generate_random_post(), generate_random_post(), generate_random_post()];
+const APPLIERS = [generate_random_appliers(), generate_random_appliers(), generate_random_appliers(), generate_random_appliers(), generate_random_appliers()];
 
+for (let i=1; i<10; i++) {
+  for (let j=1; j<10; j++) {
+    APPLIERS.push(new Applier(i, j));
+  }
+}
 
 class RequestManagerLocal {
   getAllUsers(callback) {
@@ -64,5 +81,33 @@ class RequestManagerLocal {
         callback(CATEGORIES[i]);
       }
     }
+  }
+
+  getPostById(idPost, callback) {
+    for (let i=0; i<POSTS.length; i++) {
+      if (POSTS[i].id == idPost) {
+        callback(POSTS[i]);
+      }
+    }
+  }
+
+  getAllPostsByUser(idUser, callback) {
+    let posts = [];
+    for (let i=0; i<POSTS.length; i++) {
+      if (POSTS[i].idOwner == idUser) {
+        posts.push(POSTS[i]);
+      }
+    }
+    callback(posts);
+  }
+
+  getAllAppliersByPost(idPost, callback) {
+    let appliers = [];
+    for (let i=0; i<APPLIERS.length; i++) {
+      if (APPLIERS[i].idPost == idPost) {
+        appliers.push(APPLIERS[i]);
+      }
+    }
+    callback(appliers);
   }
 }

@@ -11,6 +11,8 @@ function close_sign_in_modal() {
 
 function sign_in_validation(path) {
   close_sign_in_modal();
+
+  RM.getUserById(1, user => localStorage.setItem("jobstone-user", JSON.stringify(user)));
   localStorage.setItem("jobstone-connected", true);
   location.href = path+"index.html";
 }

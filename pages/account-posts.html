@@ -11,15 +11,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
   <title>Job'Stone</title>
 	<script type="text/javascript" src="../scripts/Post.js" defer></script>
-	<script type="text/javascript" src="../scripts/account-posts-manager.js" defer></script>
-</head>
+	<script type="text/javascript" src="../scripts/RequestManager.js" defer></script>
+	<script type="text/javascript" src="../scripts/account-posts.js" defer></script>
+	</head>
 <body>
 
   <header>
-    <a href="ask-service.html"><button id="ask-service">demander un service</button></a>
+    <a href="../index.html"><button id="ask-service">Accueil</button></a>
     <h1 id="main-title">Job'Stone</h1>
     <h2 id="sub-title">Let's share the best !</h2>
-	<a href="account-home.html"><button id="profile-icon">Mon Compte</button></a>
+	<a href="account-home.html"><button id="profile-icon"></button></a>
   </header>
 
 	
@@ -44,116 +45,7 @@
   </div>
 
 
-	<div id="list-posts">
-
-	</div>
-	<div class="post" onclick="open_appliers_modal()">
-		<p class="date">01/04 21h20</p>
-		<div class="main">
-			<button class="icon"></button>
-			<div class="text">
-				<p class="name">Idriss</p>
-				<h3>Recherche programmeur Web</h3>
-				<p class="description">"Bonjour, je suis a la recherche d’un programmeur web pour mon site WordPress. Je l’ai a peine fait, merci !"</p>
-			</div>
-		</div>
-		
-		<hr>
-		<div class="number-stars">
-				<p>500</p>
-				<img src="../res/icons/star_dark.svg" alt="icone d'étoile">
-				<img src="../res/icons/star.svg" alt="icone d'étoile">
-		</div>
-		
-		<div class="post-footer">
-			<p class="location">Toulouse (31) - Assistance Informatique</p>
-			<div class="edit-annonce">
-				<button onclick="open_edit_post_modal(event)" class="edit_btn">Modifier</button>
-				<button class="remove_btn">Supprimer</button>
-			</div>
-		</div>
-		
-	</div>
-
-	<div class="post" onclick="open_appliers_modal()">
-		<p class="date">01/04 20h18</p>
-		<div class="main">
-			<button class="icon"></button>
-			<div class="text">
-				<p class="name">Antoine</p>
-				<h3>Recherche argent</h3>
-				<p class="description">"Bonjour, je suis a la recherche d'argent, merci !"</p>
-			</div>
-		</div>
-		<hr>
-		<div class="post-footer">
-			<p class="location">Villeurbanne (69) - Assistance dans la vie</p>
-			
-			<div class="edit-annonce">
-				<button onclick="open_edit_post_modal(event)" class="edit_btn">Modifier</button>
-				<button class="remove_btn">Supprimer</button>
-			</div>
-		</div>
-		<div class="number-stars">
-			<p>1</p>
-			<img src="../res/icons/star_dark.svg" alt="icone d'étoile">
-			<img src="../res/icons/star.svg" alt="icone d'étoile">
-		</div>
-	</div>
-
-	<div class="post" onclick="open_appliers_modal()">
-		<p class="date">01/04 27h20</p>
-		<div class="main">
-			<button class="icon"></button>
-			<div class="text">
-				<p class="name">RandomDu42</p>
-				<h3>Recherche un sens à la vie</h3>
-				<p class="description">"Bonjour, si vous avez trouvé un sens à ma vie, merci de me le faire parvenir, merci !"</p>
-			</div>
-		</div>
-		<hr>
-		<div class="post-footer">
-			<p class="location">Somewhere (XX) - Drogue</p>
-			
-			<div class="edit-annonce">
-				<button onclick="open_edit_post_modal(event)" class="edit_btn">Modifier</button>
-				<button class="remove_btn">Supprimer</button>
-			</div>
-		</div>
-		<div class="number-stars">
-			<p>1 000</p>
-			<img src="../res/icons/star_dark.svg" alt="icone d'étoile">
-			<img src="../res/icons/star.svg" alt="icone d'étoile">
-		</div>
-	</div>
-
-	<div class="post" onclick="open_appliers_modal()">
-		<p class="date">01/04 00h10</p>
-		<div class="main">
-			<button class="icon"></button>
-			<div class="text">
-				<p class="name">OtherRandom</p>
-				<h3>Recherche tondeuse à mouton</h3>
-				<p class="description">"Bonjour, donnez moi une tondeuse, merci !"</p>
-			</div>
-		</div>
-		<hr>
-		
-		<div class="post-footer">
-			<p class="location">Marseille (JUL) - Mouton</p>
-			
-			<div class="edit-annonce">
-				<button onclick="open_edit_post_modal(event)" class="edit_btn">Modifier</button>
-				<button class="remove_btn">Supprimer</button>
-			</div>
-		</div>
-		
-		<div class="number-stars">
-			<p>0</p>
-			<img src="../res/icons/star_dark.svg" alt="icone d'étoile">
-			<img src="../res/icons/star.svg" alt="icone d'étoile">
-		</div>
-	</div>
+	<div id="list-posts"></div>
 
   <div id="appliers-modal">
     <div id="appliers-modal-content">

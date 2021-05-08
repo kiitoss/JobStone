@@ -1,28 +1,10 @@
+const RM = new RequestManagerLocal();
+const user = JSON.parse(localStorage.getItem("jobstone-user"));
+const icon_account = document.getElementById("profile-icon");
 const appliers_modal = document.getElementById("appliers-modal");
 const appliers_close_modal = document.getElementById("appliers-modal-close");
 const appliers_container = document.getElementById("appliers-list");
-
-class Applier {
-  constructor(pseudo, color) {
-    this.pseudo = pseudo;
-    this.color = color;
-  }
-}
-
-function generate_random_appliers() {
-  const pseudos = ["Idriss", "Antoine", "Léo", "Bodyboy", "Heiko", "Clément", "Pierre", "Anais", "Mathilde", "Hervé"];
-  let appliers_list = [];
-  const nb = Math.random() * 10 + 5;
-  for (let i=0; i<nb; i++) {
-    const random_color = "#" + Math.floor(Math.random()*16777215).toString(16);
-    const index = Math.floor(Math.random() * 10);
-    const random_pseudo = pseudos[index];
-    const appl = new Applier(random_pseudo, random_color);
-    appliers_list.push(appl);
-  }
-  return appliers_list;
-}
-
+const list_posts = document.getElementById("list-posts");
 
 
 
@@ -51,12 +33,25 @@ function append_applier_to_html(applier) {
 }
 
 function append_all_appliers_to_html() {
-  const appliers = generate_random_appliers();
   appliers_container.innerHTML = "";
-  appliers.forEach((applier) => {
-    append_applier_to_html(applier);
-  });
+  const user = JSON.parse(localStorage.getItem("jobstone-user"));
+  if (!user) { return;}
+  RM.getAllPostsByUser(user.id, posts => {
+    posts.forEach(post => {
+      RM.getAllAppliersByPost(post.id, applies => {
+        applies.forEach(apply => {
+          RM.getUserById(apply.idUser, applier => {
+            append_applier_to_html(applier);
+          })
+        })
+      })
+    })
+  })
 }
+
+
+
+
 
 function open_appliers_modal() {
   append_all_appliers_to_html();
@@ -73,9 +68,8 @@ appliers_close_modal.onclick = () => close_appliers_modal();
 
 
 
-
 const edit_post_modal = document.getElementById("edit-post-modal");
-var edit_post_close_modal = document.getElementById("edit-modal-close");
+const edit_post_close_modal = document.getElementById("edit-modal-close");
 
 function open_edit_post_modal(event) {
   edit_post_modal.style.display = "block";
@@ -92,10 +86,29 @@ edit_post_close_modal.onclick = () => close_edit_post_modal();
 
 
 
-const onclick_edit = (e) => open_edit_post_modal(e);
-const onclick_delete = (e) => console.log(e);
 
-let nP = new PostHtml(genere_random_post(), genere_random_user(), genere_random_category(), 1, onclick_edit, onclick_delete);
-nP.htmlObject.onclick = () => open_appliers_modal();
 
-document.getElementById("list-posts").appendChild(nP.htmlObject);
+
+function update_all_account_posts() {
+  const onclick_edit = (e) => open_edit_post_modal(e);
+  const onclick_delete = (e) => console.log(e);
+
+  if (!user) { return;}
+
+  RM.getAllPostsByUser(user.id, posts => {
+    posts.forEach(post => {
+      RM.getCategoryById(post.idCategory, category => {
+        let new_post = new PostHtml(post, user, category, 1, onclick_edit, onclick_delete);
+        new_post.htmlObject.onclick = () => open_appliers_modal();
+        list_posts.appendChild(new_post.htmlObject);
+      })
+    })
+  })
+}
+
+icon_account.innerHTML = user.pseudo[0];
+icon_account.style.backgroundColor = user.color;
+icon_account.style.backgroundImage = "none";
+
+
+update_all_account_posts();

@@ -1,3 +1,4 @@
+// const RM = new RequestManagerLocal();
 const service_modal = document.getElementById("service-modal");
 const close_service_btn = document.getElementById("close-service-btn");
 
@@ -45,8 +46,13 @@ function update_modal(post, owner, category) {
 }
 
 function open_service_modal(idPost) {
-  console.log(idPost);
-  update_modal(genere_random_post(), genere_random_user(), genere_random_category());
+  RM.getPostById(idPost, post => {
+    RM.getUserById(post.idOwner, owner => {
+      RM.getCategoryById(post.idCategory, category => {
+        update_modal(post, owner, category);
+      })
+    })
+  })
   service_modal.style.display = "block";
 }
 
