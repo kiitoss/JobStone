@@ -4,8 +4,9 @@ const city = ["Paris", "Genève", "Lyon", "L'Arbresle", "Saint-Etienne", "Amster
 const pseudos = ["abraham", "idriss", "antoine", "clement", "pierre", "jack", "ulysse", "bapt", "hervé", "tutur"];
 
 class Post {
-  constructor(id, datePublication, title, idCategory, startDate, endDate, postalCode, city, description, price) {
+  constructor(id, idOwner, datePublication, title, idCategory, startDate, endDate, postalCode, city, description, price) {
     this.id = id;
+    this.idOwner = idOwner;
     this.datePublication = datePublication.toLocaleDateString();
     this.title = title;
     this.idCategory = idCategory;
@@ -44,7 +45,7 @@ function genere_random_category() {
 }
 
 function genere_random_post() {
-  return new Post(Math.floor(Math.random() * 10), new Date(), titles[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 10), new Date(), new Date(), Math.floor(Math.random() * 90)+10, city[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
+  return new Post(Math.floor(Math.random() * 10), 1, new Date(), titles[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 10), new Date(), new Date(), Math.floor(Math.random() * 90)+10, city[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
 }
 
 
@@ -143,6 +144,6 @@ class PostHtml {
     this.htmlObject.appendChild(div_footer);
     this.htmlObject.appendChild(div_stars);
 
-    this.htmlObject.setAttribute("onclick", "open_service_modal()");
+    this.htmlObject.setAttribute("onclick", "open_service_modal("+post.id+")");
   }
 }
