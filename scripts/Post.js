@@ -1,5 +1,5 @@
 class Post {
-  constructor(date, hour, owner, title, description, location, cp, subject, stars) {
+  constructor(date, hour, owner, title, description, location, cp, subject, stars, editable=false, onclick_edit, onclick_delete) {
     this.htmlObject = document.createElement("div");
     this.htmlObject.setAttribute("class", "post");
 
@@ -24,6 +24,9 @@ class Post {
 
     let line = document.createElement("hr");
 
+    let div_footer = document.createElement("div");
+    div_footer.setAttribute("class", "post-footer");
+
     let p_location = document.createElement("p");
     p_location.setAttribute("class", "location");
     p_location.innerHTML = location + " (" + cp + ") - " + subject;
@@ -41,12 +44,42 @@ class Post {
     img_star.setAttribute("src", "../res/icons/star.svg");
     img_star.setAttribute("alt", "iconde d'étoile");
 
+    
+    let div_edit;
+    if (editable) {
+      div_edit = document.createElement("div");
+      div_edit.setAttribute("class", "edit-annonce");
+
+      let btn_modify = document.createElement("button");
+      btn_modify.setAttribute("class", "edit_btn");
+      btn_modify.addEventListener('click', function(e){
+        onclick_edit(e);
+      });
+      btn_modify.setAttribute("onclick", onclick_edit);
+      btn_modify.innerHTML = "Modifier";
+
+      let btn_remove = document.createElement("button");
+      btn_remove.setAttribute("class", "remove_btn");
+      btn_modify.addEventListener('click', function(e){
+        onclick_delete(e);
+      });
+      btn_remove.innerHTML = "Supprimer";
+
+      div_edit.appendChild(btn_modify);
+      div_edit.appendChild(btn_remove);
+    }
+
     div_txt.appendChild(p_name);
     div_txt.appendChild(h3_title);
     div_txt.appendChild(p_description);
 
     div_main.appendChild(btn_icon);
     div_main.appendChild(div_txt);
+
+    div_footer.appendChild(p_location);
+    if (editable) {
+      div_footer.appendChild(div_edit);
+    }
 
     div_stars.appendChild(p_nb_stars);
     div_stars.appendChild(img_star_dark);
@@ -55,19 +88,9 @@ class Post {
     this.htmlObject.appendChild(p_date);
     this.htmlObject.appendChild(div_main);
     this.htmlObject.appendChild(line);
-    this.htmlObject.appendChild(p_location);
+    this.htmlObject.appendChild(div_footer);
     this.htmlObject.appendChild(div_stars);
 
     this.htmlObject.setAttribute("onclick", "open_service_modal()");
   }
-
-  appendPost(parentId) {
-    const parent = document.getElementById(parentId);
-    parent.appendChild(this.htmlObject);
-  }
 }
-
-
-
-const nP = new Post("05/06", "12h13", "Jean", "Aide svp", "besoin d'aide", "Toulon", 32, "Animaux", 5);
-nP.appendPost("list-posts");
