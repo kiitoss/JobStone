@@ -1,22 +1,6 @@
 const service_modal = document.getElementById("service-modal");
 const close_service_btn = document.getElementById("close-service-btn");
 
-class Service {
-  constructor(pseudo, mail, title, nameCategory, startDate, endDate, postalCode, city, description, price) {
-    this.pseudo = pseudo;
-    this.mail = mail;
-    this.title = title;
-    this.nameCategory = nameCategory;
-    this.startDate = startDate.toLocaleDateString();
-    this.endDate = endDate.toLocaleDateString();
-    this.postalCode = postalCode;
-    this.city = city;
-    this.description = description;
-    this.price = price;
-  }
-}
-
-
 function generate_li_detail_html(icon, text) {
   const li_detail = document.createElement("li");
   li_detail.setAttribute("class", "service-detail");
@@ -34,31 +18,34 @@ function generate_li_detail_html(icon, text) {
   return li_detail;
 }
 
-function append_service_to_modal(service) {
-  document.getElementById("service-date").innerHTML = service.date;
-  document.getElementById("title-service").innerHTML = service.title;
-  document.getElementById("service-description").innerHTML = service.description;
+function append_service_to_modal(post, owner, category) {
+  document.getElementById("service-date").innerHTML = post.datePublication;
+  document.getElementById("title-service").innerHTML = post.title;
+  document.getElementById("service-description").innerHTML = post.description;
 
   const service_details = document.getElementById("service-details");
   service_details.innerHTML = "";
 
+  const h2_detail = document.createElement("h2");
+  h2_detail.innerHTML = "Détails";
+
   const ul_details = document.createElement("ul");
   
-  ul_details.appendChild(generate_li_detail_html("location", service.city + "(" + service.postalCode + ")"));
-  ul_details.appendChild(generate_li_detail_html("profile", service.pseudo));
-  ul_details.appendChild(generate_li_detail_html("mail", service.mail));
-  ul_details.appendChild(generate_li_detail_html(service.nameCategory, service.nameCategory));
-  ul_details.appendChild(generate_li_detail_html("calendar", service.startDate));
-  ul_details.appendChild(generate_li_detail_html("calendar", service.endDate));
+  ul_details.appendChild(generate_li_detail_html("location", post.city + "(" + post.postalCode + ")"));
+  ul_details.appendChild(generate_li_detail_html("profile", owner.pseudo));
+  ul_details.appendChild(generate_li_detail_html("mail", owner.mail));
+  ul_details.appendChild(generate_li_detail_html(category.name, category.name));
+  ul_details.appendChild(generate_li_detail_html("calendar", post.startDate));
+  ul_details.appendChild(generate_li_detail_html("calendar", post.endDate));
 
+  service_details.appendChild(h2_detail);
   service_details.appendChild(ul_details);
 
-  document.getElementById("nb_etoiles").innerHTML = service.price;
+  document.getElementById("nb_etoiles").innerHTML = post.price;
 }
 
-
 function open_service_modal() {
-  append_service_to_modal(new Service(1, "@", "aa", "profile", new Date(), new Date(), 69, "Lyon", "Hello", 50));
+  append_service_to_modal(genere_random_post(), genere_random_user(), genere_random_category());
   service_modal.style.display = "block";
 }
 
@@ -69,6 +56,18 @@ function close_service_modal() {
 close_service_btn.onclick = () => close_service_modal();
 
 
-let nP = new Post("05/06", "12h13", "Jean", "Aide svp", "besoin d'aide", "Toulon", 32, "Animaux", 5, 0);
 
-document.getElementById("list-posts").appendChild(nP.htmlObject);
+
+
+
+
+function generate_fake_post() {
+  for (let i=0; i<10; i++) {
+    let nP = new PostHtml(genere_random_post(), genere_random_user(), genere_random_category(), 0);
+
+    document.getElementById("list-posts").appendChild(nP.htmlObject);
+  }
+}
+
+
+generate_fake_post();

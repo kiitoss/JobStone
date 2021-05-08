@@ -95,7 +95,7 @@ edit_post_close_modal.onclick = () => close_edit_post_modal();
 const onclick_edit = (e) => open_edit_post_modal(e);
 const onclick_delete = (e) => console.log(e);
 
-let nP = new Post("05/06", "12h13", "Jean", "Aide svp", "besoin d'aide", "Toulon", 32, "Animaux", 5, 1, onclick_edit, onclick_delete);
+let nP = new PostHtml(genere_random_post(), genere_random_user(), genere_random_category(), 1, onclick_edit, onclick_delete);
 nP.htmlObject.onclick = () => open_appliers_modal();
 
 document.getElementById("list-posts").appendChild(nP.htmlObject);

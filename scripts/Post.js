@@ -1,10 +1,60 @@
+const categories = ["Pèche", "Manuel", "Aide", "Informatique", "Drogue", "Post", "escalade", "acrobranche", "piscine", "tennis"];
+const titles = ["Help", "bonjour", "aide info", "dev web", "prog", "html", "css et js", "php = null", "arbre", "everyone"];
+const city = ["Paris", "Genève", "Lyon", "L'Arbresle", "Saint-Etienne", "Amsterdam", "Bruxelles", "New-York", "Moscou", "Pékin"];
+const pseudos = ["abraham", "idriss", "antoine", "clement", "pierre", "jack", "ulysse", "bapt", "hervé", "tutur"];
+
 class Post {
-  constructor(date, hour, owner, title, description, location, cp, subject, stars, editable=false, onclick_edit, onclick_delete) {
+  constructor(id, datePublication, title, idCategory, startDate, endDate, postalCode, city, description, price) {
+    this.id = id;
+    this.datePublication = datePublication.toLocaleDateString();
+    this.title = title;
+    this.idCategory = idCategory;
+    this.startDate = startDate.toLocaleDateString();
+    this.endDate = endDate.toLocaleDateString();
+    this.postalCode = postalCode;
+    this.city = city;
+    this.description = description;
+    this.price = price;
+  }
+}
+
+class User {
+  constructor(id, pseudo, mail, color) {
+    this.id = id;
+    this.pseudo = pseudo;;
+    this.mail = mail;;
+    this.color = color;
+  }
+}
+
+class Category {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+}
+
+function genere_random_user() {
+  const random_color = "#" + Math.floor(Math.random()*16777215).toString(16);
+  return new User(Math.floor(Math.random() * 10), pseudos[Math.floor(Math.random() * 10)], "ericansak.doires@gmaailll.com", random_color);
+}
+
+function genere_random_category() {
+  return new Category(Math.floor(Math.random() * 10), categories[Math.floor(Math.random() * 10)])
+}
+
+function genere_random_post() {
+  return new Post(Math.floor(Math.random() * 10), new Date(), titles[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 10), new Date(), new Date(), Math.floor(Math.random() * 90)+10, city[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
+}
+
+
+class PostHtml {
+  constructor(post, owner, category, editable=false, onclick_edit, onclick_delete) {
     this.htmlObject = document.createElement("div");
     this.htmlObject.setAttribute("class", "post");
 
     let p_date = document.createElement("p");
-    p_date.innerHTML = date + " " + hour;
+    p_date.innerHTML = post.datePublication;
     p_date.setAttribute("class", "date");
 
     let div_main = document.createElement("div");
@@ -12,15 +62,17 @@ class Post {
 
     let btn_icon = document.createElement("button");
     btn_icon.setAttribute("class", "icon");
+    btn_icon.innerHTML = owner.pseudo[0];
+    btn_icon.style.backgroundColor = owner.color;
 
     let div_txt = document.createElement("div");
     div_txt.setAttribute("class", "text");
     let p_name = document.createElement("p");
-    p_name.innerHTML = owner;
+    p_name.innerHTML = owner.pseudo;
     let h3_title = document.createElement("h3");
-    h3_title.innerHTML = title;
+    h3_title.innerHTML = post.title;
     let p_description = document.createElement("p");
-    p_description.innerHTML = description;
+    p_description.innerHTML = post.description;
 
     let line = document.createElement("hr");
 
@@ -29,12 +81,12 @@ class Post {
 
     let p_location = document.createElement("p");
     p_location.setAttribute("class", "location");
-    p_location.innerHTML = location + " (" + cp + ") - " + subject;
+    p_location.innerHTML = post.city + " (" + post.postalCode + ") - " + category.name;
 
     let div_stars = document.createElement("div");
     div_stars.setAttribute("class", "number-stars");
     let p_nb_stars = document.createElement("p");
-    p_nb_stars.innerHTML = stars;
+    p_nb_stars.innerHTML = post.price;
 
     let img_star_dark = document.createElement("img");
     img_star_dark.setAttribute("src", "../res/icons/star_dark.svg");

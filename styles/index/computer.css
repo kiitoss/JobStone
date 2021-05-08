@@ -63,7 +63,9 @@
     width: 100px;
     min-width: 100px;
     height: 100px;
-    background-color: rgb(36,36,36);
+    /* background-color: rgb(36,36,36); */
+    font-size: 50px;
+    color: white;
   }
 
   .post > .number-stars {
