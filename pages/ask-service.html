@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../styles/general-style.css">
+		<link rel="stylesheet" href="../styles/ask-service/general.css">
+		<link rel="stylesheet" href="../styles/sign-in-modal.css">
+		<link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+		<title>Job'Stone</title>
+		<script type="text/javascript" src="../scripts/sign-in-modal.js" defer></script>
+		<script type="text/javascript" src="../scripts/account.js" defer></script>
+	</head>
+	<body>
+
+
+		<header>
+			<a href="../index.html"><button id="ask-service">Accueil</button></a>
+			<h1 id="main-title">Job'Stone</h1>
+			<h2 id="sub-title">Let's share the best !</h2>
+			<button onclick="account_btn_clicked(); open_sign_in_modal()" id="profile-icon" >Connexion</button>
+		</header>
+		
+		<hr class="hr-form">
+		
+			
+		<div class="form-content">
+			<form action="#">
+				<div class="container service-form">
+					<h1>Demander un service </h1>
+					<p>De quoi avez vous besoin ?</p><br>
+					<hr class="hr-form">
+					
+					
+					
+					<label><b>Titre de l'annonce</b></label><br>
+					<input type="text" placeholder="Titre de l'annonce" id="title-service" required><br>
+					
+					<label><b>Catégorie</b></label><br>
+					<div class="search-dropdown">
+						<select class="dropdown-container">
+								<optgroup label="Informatique">
+								<option>Bricolage</option>
+								<option>Jardinage</option>
+								</optgroup>
+								<optgroup label="Mecanique">
+								<option>Déménagement</option>
+								<option>Automobile</option>
+								</optgroup>
+								<optgroup label="Loisir">
+								<option>Enfants</option>
+								<option>Bricolage</option>
+								<option>Jardinage</option>
+								</optgroup>
+						</select>
+					</div>
+					
+					<br>
+					
+					<label><b>Date de réalisation</b></label><br>
+					<div class="realisation-date">
+						<br><label><h5>Début</h5>
+							<input type="date" placeholder="Date début" id="start-date" >
+						</label>
+						
+						<br>
+						
+						<label><h5>Fin</h5>
+							<input type="date" placeholder="Date fin" id="deadline" >
+						</label>
+						
+						<br>
+					</div>
+					
+					<label><b>Lieu</b></label><br>
+					<div class="location">
+						<input type="number" placeholder="Code postale" id="code-postal" required>
+						<input type="text" placeholder="Ville" id="city" required>
+						<input type="text" placeholder="Rue" id="street" required>
+					</div>
+					
+					<label><b>Description de l'annonce</b></label><br>
+					<textarea type="message" id="message" rows="6" maxlength="2000" required required></textarea>
+					
+					<button type="submit" class="submit-btn">Poster ma demande</button>
+				</div>
+			  
+			</form>			
+		</div>
+
+		<div id="sign-in-modal">
+			<div id="sign-in-modal-content">
+				<span id="sign-in-modal-close">&times;</span>
+				<form action="#">
+					<div class="sign-in-modal-container">
+						<h1>Se connecter</h1>
+						
+						<hr class="hr-form">
+	
+						<label><b>Email</b></label><br>
+						<input type="text" placeholder="Entrer Email" required><br>
+	
+						<label ><b>Mot de passe</b></label>
+						<input type="password" placeholder="Entrer Mot de passe" required>
+	
+						<hr class = "hr-form">
+				
+						<button type="submit" id="sign-in-modal-validation" onclick="sign_in_validation('../')">Connexion</button>
+					</div>
+					
+					<div class="sign-in-modal-container sign-up">
+						<p>Vous êtes nouveau ? Créer un compte <a class="sign-up-link" href="sign-up.html">S'inscrire</a>.</p>
+					</div>
+				</form>			
+			</div>
+		</div>
+	</body>
+</html>

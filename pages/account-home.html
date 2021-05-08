@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+	<link rel="stylesheet" href="../styles/general-style.css">
+  <link rel="stylesheet" href="../styles/account-home/general.css">
+  <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="../scripts/account.js" defer></script>
+  <title>Job'Stone</title>
+</head>
+<body>
+
+	<header>
+		<a href="ask-service.html"><button id="ask-service">demander un service</button></a>
+		<h1 id="main-title">Job'Stone</h1>
+		<h2 id="sub-title">Let's share the best !</h2>
+		<button id="profile-icon"></button>
+	</header>
+	
+	<hr class="hr-form">
+	<div class="gestion-content">
+		<div class="container">			
+			<div class="main-container">	
+				<div class="main-row-content">
+					<a class="row-element" href="account-posts.html">
+						<div class="element-content">	
+							<h3>Mes Annonces</h3>
+							<p>Gérer mes annonces déposées</p>
+						</div>
+					</a>
+				</div>
+				
+				<div class="main-row-content">
+				<a class="row-element" href="account-setting.html">
+						<div class="element-content">	
+							<h3>Paramètres</h3>
+							<p>Compléter et modifier mes informations</p>
+						</div>
+					</a>
+				</div>
+
+				<div class="main-row-content" onclick="logout()">
+					<a class="row-element">
+							<div class="element-content">	
+								<h3>Déconnexion</h3>
+							</div>
+						</a>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,27 +1,4 @@
 @media (max-aspect-ratio: 1/1) {
-  /* ----------------------  HEADER  ---------------------- */
-  #main-title {
-    color: rgb(255,255,255);
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-family: 'Autour One', cursive;
-    font-size: 60px;
-  }
-
-  #sub-title {
-    color: rgb(255,255,255);
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-family: 'Autour One', cursive;
-    font-size: 20px;
-  }
-
   /* ----------------------  SEARCH BAR  ---------------------- */
   #search-bar {
     height: 75px;
