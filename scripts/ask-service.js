@@ -1,7 +1,7 @@
 function ask_service() {
-  const connected = localStorage.getItem("jobstone-connected");
+  // const connected = sessionStorage.getItem("jobstone-connected");
   
-  if (!connected) {
+  if (!session_infos.connected) {
     alert("Vous devez être connecté pour accéder à ce service.");
     return;
   }

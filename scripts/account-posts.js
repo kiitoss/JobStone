@@ -1,5 +1,4 @@
 const RM = new RequestManagerLocal();
-const user = JSON.parse(localStorage.getItem("jobstone-user"));
 const icon_account = document.getElementById("profile-icon");
 const appliers_modal = document.getElementById("appliers-modal");
 const appliers_close_modal = document.getElementById("appliers-modal-close");
@@ -34,9 +33,9 @@ function append_applier_to_html(applier) {
 
 function append_all_appliers_to_html() {
   appliers_container.innerHTML = "";
-  const user = JSON.parse(localStorage.getItem("jobstone-user"));
-  if (!user) { return;}
-  RM.getAllPostsByUser(user.id, posts => {
+  // const user = JSON.parse(sessionStorage.getItem("jobstone-user"));
+  if (!session_infos.user) { return;}
+  RM.getAllPostsByUser(session_infos.user.id, posts => {
     posts.forEach(post => {
       RM.getAllAppliersByPost(post.id, applies => {
         applies.forEach(apply => {
@@ -93,12 +92,12 @@ function update_all_account_posts() {
   const onclick_edit = (e) => open_edit_post_modal(e);
   const onclick_delete = (e) => console.log(e);
 
-  if (!user) { return;}
+  if (!session_infos.user) { return;}
 
-  RM.getAllPostsByUser(user.id, posts => {
+  RM.getAllPostsByUser(session_infos.user.id, posts => {
     posts.forEach(post => {
       RM.getCategoryById(post.idCategory, category => {
-        let new_post = new PostHtml(post, user, category, 1, onclick_edit, onclick_delete);
+        let new_post = new PostHtml(post, session_infos.user, category, 1, onclick_edit, onclick_delete);
         new_post.htmlObject.onclick = () => open_appliers_modal();
         list_posts.appendChild(new_post.htmlObject);
       })
@@ -106,8 +105,8 @@ function update_all_account_posts() {
   })
 }
 
-icon_account.innerHTML = user.pseudo[0];
-icon_account.style.backgroundColor = user.color;
+icon_account.innerHTML = session_infos.user.pseudo[0];
+icon_account.style.backgroundColor = session_infos.user.color;
 icon_account.style.backgroundImage = "none";
 
 
