@@ -6,13 +6,16 @@
   <link rel="stylesheet" href="../styles/index/general.css">
   <link rel="stylesheet" href="../styles/index/computer.css">
   <link rel="stylesheet" href="../styles/index/phone.css">
-  <link rel="stylesheet" href="../styles/account-posts/general.css">
+  <link rel="stylesheet" href="../styles/new-post.css">
+	<link rel="stylesheet" href="../styles/account-posts/general.css">
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
   <title>Job'Stone</title>
-	<script type="text/javascript" src="../scripts/session-manager.js" defer></script>
+	<script type="text/javascript" src="../scripts/RequestManager.js"></script>
+	<script type="text/javascript" src="../scripts/session-manager.js"></script>
+	<script type="text/javascript" src="../scripts/account.js" defer></script>
 	<script type="text/javascript" src="../scripts/Post.js" defer></script>
-	<script type="text/javascript" src="../scripts/RequestManager.js" defer></script>
+	
 	<script type="text/javascript" src="../scripts/account-posts.js" defer></script>
 	</head>
 <body>
@@ -21,29 +24,15 @@
     <a href="../index.html"><button id="ask-service">Accueil</button></a>
     <h1 id="main-title">Job'Stone</h1>
     <h2 id="sub-title">Let's share the best !</h2>
-	<a href="account-home.html"><button id="profile-icon"></button></a>
+		<a href="account-home.html"><button id="profile-icon"></button></a>
+		<div id="user-stars">
+      <p id="amount-stars">0</p>
+      <img id="star_dark" src="../res/icons/star_dark.svg" alt="iconde d'étoile">
+    </div>
   </header>
 
 	
-  <div id=search-bar>
-    <div class="search-bar-input-container">
-      <input class="search-bar-input" placeholder="Catégorie">
-      <ul class="search-bar-input-extension">
-        <li>Informatique</li>
-        <li>Jardin</li>
-        <li>Maison</li>
-      </ul>
-    </div>
-    <div class="search-bar-input-container">
-      <input class="search-bar-input" placeholder="Ville ou CP">
-      <ul class="search-bar-input-extension">
-        <li>Paris</li>
-        <li>Lyon</li>
-        <li>Marseille</li>
-      </ul>
-    </div>
-    <img id="search-icon" src="../res/icons/search.svg" alt="icone de recherche">
-  </div>
+  <div id=search-bar></div>
 
 
 	<div id="list-posts"></div>
@@ -54,45 +43,71 @@
 			<h1>Candidats</h1>
 			<div id="appliers-list">
 			</div>
-			
     </div>
   </div>	
 
 	<div id="edit-post-modal" class="modal-edit">
-		<div class="form-content">
+		<div class="form-content container">
 			<span id="edit-modal-close" class="close">&times;</span>
 			<form action="#">
-				<div class="container edit-annonce">
-					<h1>Recherche programmeur Web</h1>
-					
+				<div class="service-form">
+					<h1>Mettre à jour une annonce</h1>
+					<p>De quoi avez vous besoin ?</p><br>
 					<hr class="hr-form">
-
+					
+					
+					
+					<label><b>Titre de l'annonce</b></label><br>
+					<input type="text" placeholder="Titre de l'annonce" id="title-service" required><br>
+					
+					<label><b>Catégorie</b></label><br>
+					<div class="search-dropdown">
+						<select id="dropdown-category" class="dropdown-container">
+						</select>
+					</div>
+					
+					<br>
+					
 					<label><b>Date de réalisation</b></label><br>
 					<div class="realisation-date">
 						<br><label><h5>Début</h5>
-							<input type="date" placeholder="Date début" id="start-date" >
+							<input type="date" placeholder="Date début" id="start-date" required>
 						</label>
 						
 						<br>
 						
 						<label><h5>Fin</h5>
-							<input type="date" placeholder="Date fin" id="deadline" >
+							<input type="date" placeholder="Date fin" id="end-date" required>
 						</label>
 						
 						<br>
 					</div>
-					<br>
+					
+					<label><b>Lieu</b></label><br>
+					<div class="location">
+						<input type="number" placeholder="Code postale" id="postal-code" required>
+						<input type="text" placeholder="Ville" id="city" required>
+					</div>
+
+					<label><b>Prix</b></label><br>
+						<input type="number" id="price" required>
 					
 					<label><b>Description de l'annonce</b></label><br>
-					<textarea type="message" id="message" rows="6" maxlength="2000" required required></textarea>
+					<textarea type="message" id="description" rows="6" maxlength="2000" required required></textarea>
 					
-					<hr class = "hr-form">
-			
-					<button type="submit" class="validation-btn">Valider les modifications</button>
+					<button id="edit-post-validation" type="submit" class="submit-btn">Mettre à jour ma demande</button>
 				</div>
+			  
 			</form>			
 		</div>
 	</div>
+
+	<div id="alert-modal">
+    <div id="alert-modal-content">
+      <span id="alert-modal-close" onclick="close_alert_modal()">&times;</span>
+      <p id="alert-msg"></p>		
+    </div>
+  </div>
 </body>
 
 </html>

@@ -74,6 +74,29 @@ header {
   font-size: 50px;
 }
 
+#user-stars {
+  position: absolute;
+  right: 30px;
+  top: 110px;
+  background-color: rgb(234,195,168);
+  width: 80px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 5px;
+}
+
+#amount-stars {
+  width: 50%;
+  text-align: center;
+  color: rgb(36,36,36);
+}
+
+#star_dark {
+  width: 50%;
+  height: 20px;
+}
 
 /* ----------------------  HR  ---------------------- */
 .hr-form {

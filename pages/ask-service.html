@@ -9,7 +9,9 @@
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
 		<title>Job'Stone</title>
 		<script type="text/javascript" src="../scripts/Post.js" defer></script>
-		<script type="text/javascript" src="../scripts/session-manager.js" defer></script>
+		<script type="text/javascript" src="../scripts/RequestManager.js"></script>
+		<script type="text/javascript" src="../scripts/session-manager.js"></script>
+		
 		<!-- <script type="text/javascript" src="../scripts/sign-in-modal.js" defer></script> -->
 		<script type="text/javascript" src="../scripts/account.js" defer></script>
 		<script type="text/javascript" src="../scripts/ask-service.js" defer></script>
@@ -22,6 +24,10 @@
 			<h1 id="main-title">Job'Stone</h1>
 			<h2 id="sub-title">Let's share the best !</h2>
 			<button onclick="account_btn_clicked()" id="profile-icon" ></button>
+			<div id="user-stars">
+				<p id="amount-stars">0</p>
+				<img id="star_dark" src="../res/icons/star_dark.svg" alt="iconde d'étoile">
+			</div>
 		</header>
 		
 		<hr class="hr-form">
@@ -42,13 +48,6 @@
 					<label><b>Catégorie</b></label><br>
 					<div class="search-dropdown">
 						<select id="dropdown-category" class="dropdown-container">
-							<option id="dropdown-category-1">Bricolage</option>
-							<option id="dropdown-category-2">Jardinage</option>
-							<option id="dropdown-category-3">Déménagement</option>
-							<option id="dropdown-category-4">Automobile</option>
-							<option id="dropdown-category-5">Enfants</option>
-							<option id="dropdown-category-6">Bricolage</option>
-							<option id="dropdown-category-7">Jardinage</option>
 						</select>
 					</div>
 					
@@ -57,13 +56,13 @@
 					<label><b>Date de réalisation</b></label><br>
 					<div class="realisation-date">
 						<br><label><h5>Début</h5>
-							<input type="date" placeholder="Date début" id="start-date">
+							<input type="date" placeholder="Date début" id="start-date" required>
 						</label>
 						
 						<br>
 						
 						<label><h5>Fin</h5>
-							<input type="date" placeholder="Date fin" id="end-date" >
+							<input type="date" placeholder="Date fin" id="end-date" required>
 						</label>
 						
 						<br>

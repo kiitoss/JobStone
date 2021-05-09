@@ -127,15 +127,15 @@ class PostHtml {
       let btn_modify = document.createElement("button");
       btn_modify.setAttribute("class", "edit_btn");
       btn_modify.addEventListener('click', function(e){
-        onclick_edit(e);
+        onclick_edit(e, post);
       });
       btn_modify.setAttribute("onclick", onclick_edit);
       btn_modify.innerHTML = "Modifier";
 
       let btn_remove = document.createElement("button");
       btn_remove.setAttribute("class", "remove_btn");
-      btn_modify.addEventListener('click', function(e){
-        onclick_delete(e);
+      btn_remove.addEventListener('click', function(e){
+        onclick_delete(e, post.id);
       });
       btn_remove.innerHTML = "Supprimer";
 
