@@ -3,11 +3,12 @@ const service_modal = document.getElementById("service-modal");
 const close_service_btn = document.getElementById("close-service-btn");
 
 function generate_li_detail_html(icon, text) {
+  const path = window.location.href.split("jobstone")[0]+"/jobstone/";
   const li_detail = document.createElement("li");
   li_detail.setAttribute("class", "service-detail");
   
   const img_detail = document.createElement("img");
-  img_detail.setAttribute("src", "../res/icons/"+icon+".svg");
+  img_detail.setAttribute("src", path+"res/icons/"+icon+".svg");
   img_detail.setAttribute("alt", "icone de "+icon);
 
   const p_detail = document.createElement("p");

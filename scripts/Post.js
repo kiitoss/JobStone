@@ -70,6 +70,8 @@ function genere_random_post() {
 
 class PostHtml {
   constructor(post, owner, category, editable=false, onclick_edit, onclick_delete) {
+    const path = window.location.href.split("jobstone")[0]+"/jobstone";
+
     this.htmlObject = document.createElement("div");
     this.htmlObject.setAttribute("class", "post");
 
@@ -109,11 +111,11 @@ class PostHtml {
     p_nb_stars.innerHTML = post.price;
 
     let img_star_dark = document.createElement("img");
-    img_star_dark.setAttribute("src", "../res/icons/star_dark.svg");
+    img_star_dark.setAttribute("src", path+"/res/icons/star_dark.svg");
     img_star_dark.setAttribute("alt", "icone d'étoile");
 
     let img_star = document.createElement("img");
-    img_star.setAttribute("src", "../res/icons/star.svg");
+    img_star.setAttribute("src", path+"/res/icons/star.svg");
     img_star.setAttribute("alt", "iconde d'étoile");
 
     

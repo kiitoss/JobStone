@@ -39,7 +39,8 @@ function ask_service() {
     return;
   }
 
-  location.href = "pages/ask-service.html";
+  const index = window.location.href.split("jobstone")[0]+"/jobstone/pages/ask-service.html";
+  location.href = index;
 }
 
 function close_ask_service_modal() {
