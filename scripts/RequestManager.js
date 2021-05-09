@@ -25,6 +25,20 @@ let id_user = 1;
 let id_cat = 1;
 let id_post = 1;
 
+function format_date(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [day, month, year].join('/');
+}
+
 function generate_random_user() {
   const random_color = "#" + Math.floor(Math.random()*16777215).toString(16);
   return new User(id_user++, PSE[Math.floor(Math.random() * 10)], "ericansak.doires@gmaailll.com", random_color);
@@ -35,7 +49,7 @@ function generate_random_category() {
 }
 
 function generate_random_post() {
-  return new Post(id_post++, (id_post == 1) ? 1 : id_post-1, new Date(), TI[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 5), new Date(), new Date(), Math.floor(Math.random() * 90)+10, CI[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
+  return new Post(id_post++, (id_post == 1) ? 1 : id_post-1, format_date(new Date()), TI[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 5), format_date(new Date()), format_date(new Date()), Math.floor(Math.random() * 90)+10, CI[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
 }
 
 function generate_random_appliers() {
@@ -183,5 +197,9 @@ class RequestManagerLocal {
     } else {
       callback(null);
     }
+  }
+
+  postPost(post, callback) {
+    callback();
   }
 }

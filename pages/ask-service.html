@@ -8,9 +8,11 @@
 		<link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
 		<title>Job'Stone</title>
+		<script type="text/javascript" src="../scripts/Post.js" defer></script>
 		<script type="text/javascript" src="../scripts/session-manager.js" defer></script>
-		<script type="text/javascript" src="../scripts/sign-in-modal.js" defer></script>
+		<!-- <script type="text/javascript" src="../scripts/sign-in-modal.js" defer></script> -->
 		<script type="text/javascript" src="../scripts/account.js" defer></script>
+		<script type="text/javascript" src="../scripts/ask-service.js" defer></script>
 	</head>
 	<body>
 
@@ -19,7 +21,7 @@
 			<a href="../index.html"><button id="ask-service">Accueil</button></a>
 			<h1 id="main-title">Job'Stone</h1>
 			<h2 id="sub-title">Let's share the best !</h2>
-			<button onclick="account_btn_clicked(); open_sign_in_modal()" id="profile-icon" >Connexion</button>
+			<button onclick="account_btn_clicked()" id="profile-icon" ></button>
 		</header>
 		
 		<hr class="hr-form">
@@ -39,20 +41,14 @@
 					
 					<label><b>Catégorie</b></label><br>
 					<div class="search-dropdown">
-						<select class="dropdown-container">
-								<optgroup label="Informatique">
-								<option>Bricolage</option>
-								<option>Jardinage</option>
-								</optgroup>
-								<optgroup label="Mecanique">
-								<option>Déménagement</option>
-								<option>Automobile</option>
-								</optgroup>
-								<optgroup label="Loisir">
-								<option>Enfants</option>
-								<option>Bricolage</option>
-								<option>Jardinage</option>
-								</optgroup>
+						<select id="dropdown-category" class="dropdown-container">
+							<option id="dropdown-category-1">Bricolage</option>
+							<option id="dropdown-category-2">Jardinage</option>
+							<option id="dropdown-category-3">Déménagement</option>
+							<option id="dropdown-category-4">Automobile</option>
+							<option id="dropdown-category-5">Enfants</option>
+							<option id="dropdown-category-6">Bricolage</option>
+							<option id="dropdown-category-7">Jardinage</option>
 						</select>
 					</div>
 					
@@ -61,13 +57,13 @@
 					<label><b>Date de réalisation</b></label><br>
 					<div class="realisation-date">
 						<br><label><h5>Début</h5>
-							<input type="date" placeholder="Date début" id="start-date" >
+							<input type="date" placeholder="Date début" id="start-date">
 						</label>
 						
 						<br>
 						
 						<label><h5>Fin</h5>
-							<input type="date" placeholder="Date fin" id="deadline" >
+							<input type="date" placeholder="Date fin" id="end-date" >
 						</label>
 						
 						<br>
@@ -75,21 +71,23 @@
 					
 					<label><b>Lieu</b></label><br>
 					<div class="location">
-						<input type="number" placeholder="Code postale" id="code-postal" required>
+						<input type="number" placeholder="Code postale" id="postal-code" required>
 						<input type="text" placeholder="Ville" id="city" required>
-						<input type="text" placeholder="Rue" id="street" required>
 					</div>
+
+					<label><b>Prix</b></label><br>
+						<input type="number" id="price" required>
 					
 					<label><b>Description de l'annonce</b></label><br>
-					<textarea type="message" id="message" rows="6" maxlength="2000" required required></textarea>
+					<textarea type="message" id="description" rows="6" maxlength="2000" required required></textarea>
 					
-					<button type="submit" class="submit-btn">Poster ma demande</button>
+					<button id="ask-service-validation" type="submit" class="submit-btn">Poster ma demande</button>
 				</div>
 			  
 			</form>			
 		</div>
 
-		<div id="sign-in-modal">
+		<!-- <div id="sign-in-modal">
 			<div id="sign-in-modal-content">
 				<span id="sign-in-modal-close">&times;</span>
 				<form action="#">
@@ -114,6 +112,6 @@
 					</div>
 				</form>			
 			</div>
-		</div>
+		</div> -->
 	</body>
 </html>

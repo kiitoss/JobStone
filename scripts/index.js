@@ -4,6 +4,7 @@ const input_city = document.getElementById("search-bar-city");
 const search_bar_extension_city = document.getElementById("search-bar-extension-city");
 const input_category = document.getElementById("search-bar-category");
 const search_bar_extension_category = document.getElementById("search-bar-extension-category");
+const ask_service_modal = document.getElementById("ask-service-modal");
 // function show_all_users() {
 //   RM.getAllUsers(users => {
 //     users.forEach(user => {
@@ -32,7 +33,18 @@ const search_bar_extension_category = document.getElementById("search-bar-extens
 // show_all_categories();
 // show_all_posts();
 
+function ask_service() {
+  if (!session_infos.connected) {
+    ask_service_modal.style.display = "block";
+    return;
+  }
 
+  location.href = "pages/ask-service.html";
+}
+
+function close_ask_service_modal() {
+  ask_service_modal.style.display = "none";
+}
 
 function update_all_posts() {
   list_posts.innerHTML = "";
@@ -221,6 +233,5 @@ function main() {
   document.getElementById("search-bar-category").oninput = update_input_category;
   document.getElementById("search-bar-category").onfocus = update_input_category;
 }
-
 
 main();

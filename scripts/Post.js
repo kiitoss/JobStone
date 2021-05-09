@@ -3,15 +3,34 @@ const titles = ["Help", "bonjour", "aide info", "dev web", "prog", "html", "css 
 const city = ["Paris", "Genève", "Lyon", "L'Arbresle", "Saint-Etienne", "Amsterdam", "Bruxelles", "New-York", "Moscou", "Pékin"];
 const pseudos = ["abraham", "idriss", "antoine", "clement", "pierre", "jack", "ulysse", "bapt", "hervé", "tutur"];
 
+function switch_format_date(date_str) {
+  const date_str_split = date_str.split("-");
+  return [date_str_split[2], date_str_split[1], date_str_split[0]].join("/");
+}
+
+function format_date(date) {
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [day, month, year].join('/');
+}
+
 class Post {
   constructor(id, idOwner, datePublication, title, idCategory, startDate, endDate, postalCode, city, description, price) {
     this.id = id;
     this.idOwner = idOwner;
-    this.datePublication = datePublication.toLocaleDateString();
+    this.datePublication = datePublication;
     this.title = title;
     this.idCategory = idCategory;
-    this.startDate = startDate.toLocaleDateString();
-    this.endDate = endDate.toLocaleDateString();
+    this.startDate = startDate;
+    this.endDate = endDate;
     this.postalCode = postalCode;
     this.city = city;
     this.description = description;
@@ -45,7 +64,7 @@ function genere_random_category() {
 }
 
 function genere_random_post() {
-  return new Post(Math.floor(Math.random() * 10), 1, new Date(), titles[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 10), new Date(), new Date(), Math.floor(Math.random() * 90)+10, city[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
+  return new Post(Math.floor(Math.random() * 10), 1, format_date(new Date()), titles[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 10), format_date(new Date()), format_date(new Date()), Math.floor(Math.random() * 90)+10, city[Math.floor(Math.random() * 10)], "HELLO LES BOYS, ceci est ma description", Math.floor(Math.random() * 100));
 }
 
 
