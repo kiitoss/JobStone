@@ -1,4 +1,5 @@
-const RM = new RequestManagerLocal();
+// const RM = new RequestManagerLocal();
+
 const list_posts = document.getElementById("list-posts");
 const input_city = document.getElementById("search-bar-city");
 const search_bar_extension_city = document.getElementById("search-bar-extension-city");
@@ -39,7 +40,8 @@ function ask_service() {
     return;
   }
 
-  const index = window.location.href.split("jobstone")[0]+"/jobstone/pages/ask-service.html";
+
+  const index = session_infos.default_path + "pages/ask-service.html";
   location.href = index;
 }
 
@@ -75,10 +77,8 @@ function update_all_posts_with_category(idCategory) {
 
 function update_all_posts_with_city(value_and_city) {
   list_posts.innerHTML = "";
-  console.log(value_and_city);
   RM.getAllPostsByCity(value_and_city, posts => {
     posts.forEach(post => {
-      console.log(post);
       RM.getUserById(post.idOwner, owner => {
         RM.getCategoryById(post.idCategory, category => {
           list_posts.appendChild(new PostHtml(post, owner, category, 0).htmlObject);
@@ -112,7 +112,6 @@ function update_all_categories(categories) {
 function update_chosen_category(category) {
   const list_categories = Array.from(document.getElementsByClassName("category-item"));
   const list_active_categories = Array.from(document.getElementsByClassName("category-active"));
-  list_active_categories.forEach(cat => console.log(cat.innerHTML));
   list_active_categories.forEach(active_category => {
     active_category.classList.remove("category-active");
   });
@@ -146,7 +145,6 @@ function search_posts() {
   }
 
   if (!idCategory) {
-    console.log("HERE" + city)
     update_all_posts_with_city({city: city, PC: pc});
     return;
   }
@@ -211,19 +209,22 @@ const update_input_category = () => {
 
 
 function main() {
-  if (sessionStorage.user) {
+  if (session_infos.user) {
     const icon_account = document.getElementById("profile-icon");
-    icon_account.innerHTML = sessionStorage.user.pseudo[0];
-    icon_account.style.backgroundColor = user.color;
+    icon_account.innerHTML = session_infos.user.pseudo[0];
+    icon_account.style.backgroundColor = session_infos.user.color;
     icon_account.style.backgroundImage = "none";
   }
-  
-  if (!sessionStorage.initialized) {
+
+  if (!session_infos.initialized) {
     RM.getAllCategories(categories => {
-      sessionStorage.setItem("jobstone-categories", categories);
+      sessionStorage.setItem("jobstone-categories", JSON.stringify(categories));
+      sessionStorage.setItem("jobstone-default-path", window.location.href.split("index.html")[0]);
       update_all_categories(categories);
       sessionStorage.setItem("jobstone-initialized", true);
-    })
+    }) 
+  } else {
+    update_all_categories(session_infos.categories);
   }
 
   update_all_posts();

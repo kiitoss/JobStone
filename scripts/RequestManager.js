@@ -5,7 +5,37 @@ class RequestManager {
 }
 
 
+class Post {
+  constructor(id, idOwner, datePublication, title, idCategory, startDate, endDate, postalCode, city, description, price) {
+    this.id = id;
+    this.idOwner = idOwner;
+    this.datePublication = datePublication;
+    this.title = title;
+    this.idCategory = idCategory;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.postalCode = postalCode;
+    this.city = city;
+    this.description = description;
+    this.price = price;
+  }
+}
 
+class User {
+  constructor(id, pseudo, mail, color) {
+    this.id = id;
+    this.pseudo = pseudo;;
+    this.mail = mail;;
+    this.color = color;
+  }
+}
+
+class Category {
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+}
 
 class Applier {
   constructor(idPost, idUser) {

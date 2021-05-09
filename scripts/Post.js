@@ -22,37 +22,37 @@ function format_date(date) {
   return [day, month, year].join('/');
 }
 
-class Post {
-  constructor(id, idOwner, datePublication, title, idCategory, startDate, endDate, postalCode, city, description, price) {
-    this.id = id;
-    this.idOwner = idOwner;
-    this.datePublication = datePublication;
-    this.title = title;
-    this.idCategory = idCategory;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.postalCode = postalCode;
-    this.city = city;
-    this.description = description;
-    this.price = price;
-  }
-}
+// class Post {
+//   constructor(id, idOwner, datePublication, title, idCategory, startDate, endDate, postalCode, city, description, price) {
+//     this.id = id;
+//     this.idOwner = idOwner;
+//     this.datePublication = datePublication;
+//     this.title = title;
+//     this.idCategory = idCategory;
+//     this.startDate = startDate;
+//     this.endDate = endDate;
+//     this.postalCode = postalCode;
+//     this.city = city;
+//     this.description = description;
+//     this.price = price;
+//   }
+// }
 
-class User {
-  constructor(id, pseudo, mail, color) {
-    this.id = id;
-    this.pseudo = pseudo;;
-    this.mail = mail;;
-    this.color = color;
-  }
-}
+// class User {
+//   constructor(id, pseudo, mail, color) {
+//     this.id = id;
+//     this.pseudo = pseudo;;
+//     this.mail = mail;;
+//     this.color = color;
+//   }
+// }
 
-class Category {
-  constructor(id, name) {
-    this.id = id;
-    this.name = name;
-  }
-}
+// class Category {
+//   constructor(id, name) {
+//     this.id = id;
+//     this.name = name;
+//   }
+// }
 
 function genere_random_user() {
   const random_color = "#" + Math.floor(Math.random()*16777215).toString(16);
@@ -70,7 +70,10 @@ function genere_random_post() {
 
 class PostHtml {
   constructor(post, owner, category, editable=false, onclick_edit, onclick_delete) {
-    const path = window.location.href.split("jobstone")[0]+"/jobstone";
+    let path = session_infos.default_path;
+    if (!path) {
+      path = window.location.href.split("index.html")[0];
+    }
 
     this.htmlObject = document.createElement("div");
     this.htmlObject.setAttribute("class", "post");
@@ -111,11 +114,11 @@ class PostHtml {
     p_nb_stars.innerHTML = post.price;
 
     let img_star_dark = document.createElement("img");
-    img_star_dark.setAttribute("src", path+"/res/icons/star_dark.svg");
+    img_star_dark.setAttribute("src", path + "/res/icons/star_dark.svg");
     img_star_dark.setAttribute("alt", "icone d'étoile");
 
     let img_star = document.createElement("img");
-    img_star.setAttribute("src", path+"/res/icons/star.svg");
+    img_star.setAttribute("src", path + "/res/icons/star.svg");
     img_star.setAttribute("alt", "iconde d'étoile");
 
     

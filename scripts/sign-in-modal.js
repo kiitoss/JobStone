@@ -32,7 +32,7 @@ function sign_in_validation(e) {
     sessionStorage.setItem("jobstone-user", JSON.stringify(user));
     sessionStorage.setItem("jobstone-connected", true);
 
-    const index = window.location.href.split("jobstone")[0]+"/jobstone/index.html";
+    const index = session_infos.default_path + "index.html";
     location.href = index;
   })
 }

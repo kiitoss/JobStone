@@ -2,14 +2,14 @@
 function account_btn_clicked() {
   if (!session_infos.connected) { return; }
 
-  const index = window.location.href.split("jobstone")[0]+"/jobstone/pages/account-home.html";
+  const index = session_infos.default_path + "pages/account-home.html";
   location.href = index;
 }
 
 function logout() {
   sessionStorage.removeItem("jobstone-connected");
   sessionStorage.removeItem("jobstone-user");
-  const index = window.location.href.split("jobstone")[0]+"/jobstone/index.html";
+  const index = session_infos.default_path + "index.html";
   location.href = index;
 }
 
