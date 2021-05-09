@@ -71,9 +71,6 @@ function genere_random_post() {
 class PostHtml {
   constructor(post, owner, category, editable=false, onclick_edit, onclick_delete) {
     let path = session_infos.default_path;
-    if (!path) {
-      path = window.location.href.split("index.html")[0];
-    }
 
     this.htmlObject = document.createElement("div");
     this.htmlObject.setAttribute("class", "post");

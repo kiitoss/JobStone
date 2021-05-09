@@ -222,6 +222,7 @@ function main() {
       sessionStorage.setItem("jobstone-default-path", window.location.href.split("index.html")[0]);
       update_all_categories(categories);
       sessionStorage.setItem("jobstone-initialized", true);
+      window.location.reload();
     }) 
   } else {
     update_all_categories(session_infos.categories);

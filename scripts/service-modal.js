@@ -4,9 +4,6 @@ const close_service_btn = document.getElementById("close-service-btn");
 
 function generate_li_detail_html(icon, text) {
   let path = session_infos.default_path;
-  if (!path) {
-    path = window.location.href.split("index.html")[0];
-  }
 
   const li_detail = document.createElement("li");
   li_detail.setAttribute("class", "service-detail");
