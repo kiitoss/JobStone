@@ -34,59 +34,25 @@
 	
   <div id=search-bar>
     <div class="search-bar-input-container">
-      <input class="search-bar-input" placeholder="Catégorie">
-      <ul class="search-bar-input-extension">
+      <input id="search-bar-category" class="search-bar-input" placeholder="Catégorie">
+      <ul id="search-bar-extension-category" class="search-bar-input-extension">
         <li>Informatique</li>
         <li>Jardin</li>
         <li>Maison</li>
       </ul>
     </div>
     <div class="search-bar-input-container">
-      <input class="search-bar-input" placeholder="Ville ou CP">
-      <ul class="search-bar-input-extension">
-        <li>Paris</li>
-        <li>Lyon</li>
-        <li>Marseille</li>
+      <input id="search-bar-city" class="search-bar-input" placeholder="Ville ou CP">
+      <ul id="search-bar-extension-city" class="search-bar-input-extension">
       </ul>
     </div>
-    <img id="search-icon" src="res/icons/search.svg" alt="icone de recherche">
+    <img id="search-icon" src="res/icons/search.svg" alt="icone de recherche" onclick="search_posts()">
   </div>
 
   <img id="hamburger-icon" src="res/icons/hamburger.svg" alt="icone hamburger">
   <nav>
     <h2>Liste des services</h2>
-    <ul id="list-categories">
-      <li>Bricolage</li>
-      <li>Jardinage</li>
-      <li>Déménagement</li>
-      <li>Automobile</li>
-      <li>Enfants</li>
-      <li>Bricolage</li>
-      <li>Jardinage</li>
-      <li>Déménagement</li>
-      <li>Automobile</li>
-      <li>Enfants</li>
-      <li>Bricolage</li>
-      <li>Jardinage</li>
-      <li>Déménagement</li>
-      <li>Automobile</li>
-      <li>Enfants</li>
-      <li>Bricolage</li>
-      <li>Jardinage</li>
-      <li>Déménagement</li>
-      <li>Automobile</li>
-      <li>Enfants</li>
-      <li>Bricolage</li>
-      <li>Jardinage</li>
-      <li>Déménagement</li>
-      <li>Automobile</li>
-      <li>Enfants</li>
-      <li>Bricolage</li>
-      <li>Jardinage</li>
-      <li>Déménagement</li>
-      <li>Automobile</li>
-      <li>Enfants</li>
-    </ul>
+    <ul id="list-categories"></ul>
   </nav>
 
   <div id="list-posts"></div>

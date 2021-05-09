@@ -24,6 +24,11 @@
   nav > ul {
     list-style: none;
   }
+  
+  nav > ul > li:hover {
+    background-color: rgb(36,36,36);
+    color: white;
+  }
 
   /* ----------------------  POST  ---------------------- */
   .post {

@@ -17,7 +17,6 @@ class Applier {
 
 
 
-
 const PSE = ["abraham", "idriss", "antoine", "clement", "pierre", "jack", "ulysse", "bapt", "hervé", "tutur"];
 const CAT = ["Pèche", "Manuel", "Aide", "Informatique", "Drogue", "Post", "escalade", "acrobranche", "piscine", "tennis"];
 const TI = ["Help", "bonjour", "aide info", "dev web", "prog", "html", "css et js", "php = null", "arbre", "everyone"];
@@ -47,6 +46,7 @@ const USERS = [generate_random_user(), generate_random_user(), generate_random_u
 const CATEGORIES = [generate_random_category(), generate_random_category(), generate_random_category(), generate_random_category(), generate_random_category(), generate_random_category()];
 const POSTS = [generate_random_post(), generate_random_post(), generate_random_post(), generate_random_post(), generate_random_post(), generate_random_post(), generate_random_post()];
 const APPLIERS = [generate_random_appliers(), generate_random_appliers(), generate_random_appliers(), generate_random_appliers(), generate_random_appliers()];
+
 
 for (let i=1; i<10; i++) {
   for (let j=1; j<10; j++) {
@@ -109,5 +109,71 @@ class RequestManagerLocal {
       }
     }
     callback(appliers);
+  }
+
+  getAllCitiesAndPCWithValue(value, callback) {
+    let cities_and_PC = [];
+    this.getAllPosts(posts => {
+      posts.forEach(post => {
+        const city = post.city.toLowerCase();
+        const PC = post.postalCode.toString();
+        if (value.length > 0 && !city.includes(value) && !PC.includes(value)) {
+          return;
+        }
+        const city_and_PC = {
+          city: city.charAt(0).toUpperCase() + city.slice(1),
+          PC: PC
+        }
+        if (cities_and_PC.indexOf(city_and_PC) == -1) {
+          cities_and_PC.push(city_and_PC);
+        }
+      })
+      callback(cities_and_PC);
+    })
+  }
+
+  getAllCategoriesWithValue(value, callback) {
+    let list_categories = [];
+    this.getAllCategories(categories => {
+      categories.forEach(category => {
+        if (value.length > 0 && !category.name.toLowerCase().includes(value)) {
+          return;
+        }
+        if (list_categories.indexOf(category) == -1) {
+          list_categories.push(category);
+        }
+      })
+      callback(list_categories);
+    }) 
+  }
+
+  getAllPostsByCategory(idCategory, callback) {
+    let posts = [];
+    for (let i=0; i<POSTS.length; i++) {
+      if (POSTS[i].idCategory == idCategory) {
+        posts.push(POSTS[i]);
+      }
+    }
+    callback(posts);
+  }
+
+  getAllPostsByCity(value_and_city, callback) {
+    let posts = [];
+    for (let i=0; i<POSTS.length; i++) {
+      if (POSTS[i].city.toLowerCase() == value_and_city.city.toLowerCase() && POSTS[i].postalCode == value_and_city.PC) {
+        posts.push(POSTS[i]);
+      }
+    }
+    callback(posts);
+  }
+
+  getAllPostsByCategoryAndCity(category_and_city, callback) {
+    let posts = [];
+    for (let i=0; i<POSTS.length; i++) {
+      if (POSTS[i].city.toLowerCase() == category_and_city.city.toLowerCase() && POSTS[i].postalCode == category_and_city.PC && POSTS[i].idCategory == category_and_city.idCategory) {
+        posts.push(POSTS[i]);
+      }
+    }
+    callback(posts);
   }
 }
