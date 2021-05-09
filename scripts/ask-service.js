@@ -1,10 +1,14 @@
+const ask_service_modal = document.getElementById("ask-service-modal");
+
 function ask_service() {
-  // const connected = sessionStorage.getItem("jobstone-connected");
-  
   if (!session_infos.connected) {
-    alert("Vous devez être connecté pour accéder à ce service.");
+    ask_service_modal.style.display = "block";
     return;
   }
 
   location.href = "pages/ask-service.html";
+}
+
+function close_ask_service_modal() {
+  ask_service_modal.style.display = "none";
 }
