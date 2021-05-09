@@ -176,4 +176,12 @@ class RequestManagerLocal {
     }
     callback(posts);
   }
+
+  connect(mail, password, callback) {
+    if (mail == "test@test.com" && password == "test") {
+      this.getUserById(1, user => callback(user));
+    } else {
+      callback(null);
+    }
+  }
 }

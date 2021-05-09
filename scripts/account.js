@@ -1,8 +1,5 @@
 
-// const user = JSON.parse(sessionStorage.getItem("jobstone-user"));
 function account_btn_clicked() {
-  // const connected = sessionStorage.getItem("jobstone-connected");
-
   if (!session_infos.connected) { return; }
 
   const index = window.location.href.split("/").slice(0, 3).join("/") + "/pages/account-home.html";

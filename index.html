@@ -93,19 +93,20 @@
           <hr class="hr-form">
 
           <label><b>Email</b></label><br>
-          <input type="text" placeholder="Entrer Email" required><br>
+          <input id="input-mail" type="text" placeholder="Entrer Email" required><br>
 
           <label ><b>Mot de passe</b></label>
-          <input type="password" placeholder="Entrer Mot de passe" required>
+          <input id="input-password" type="password" placeholder="Entrer Mot de passe" required>
 
           <hr class = "hr-form">
-      
-          <button type="submit" id="sign-in-modal-validation" onclick="sign_in_validation('./')">Connexion</button>
+          
+          <button type="submit" id="sign-in-modal-validation">Connexion</button>
         </div>
         
         <div class="sign-in-modal-container sign-up">
           <p>Vous êtes nouveau ? Créer un compte <a class="sign-up-link" href="./pages/sign-up.html">S'inscrire</a>.</p>
         </div>
+        <p id="incorrect-log-in">mail ou mot de passe incorrect !</p>
       </form>			
     </div>
   </div>

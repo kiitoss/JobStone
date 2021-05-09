@@ -1,3 +1,9 @@
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 /* ----------------------  SIGN-IN MODAL---------------------- */
 #sign-in-modal {
   display: none; 
@@ -88,4 +94,14 @@
 
 #sign-in-modal .sign-up p {
   text-align: center;
+}
+
+#incorrect-log-in {
+  color: red;
+  text-align: center;
+  font-size: 20px;
+  margin: 20px auto;
+  display: none;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
 }
