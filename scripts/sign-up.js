@@ -29,7 +29,7 @@ function sign_up(e) {
       setTimeout(() => { incorrect_sign_up.style.display = "none"; }, 1000);
       return;
     }
-    RM.createNewUser(new User(null, pseudo, mail, "#" + Math.floor(Math.random()*16777215).toString(16), 1000, 69, PC, city), new_user => {
+    RM.createNewUser(new User(null, pseudo, mail, "#" + Math.floor(Math.random()*16777215).toString(16), 1000, 69, PC, city, password1), new_user => {
       sessionStorage.setItem("jobstone-user", JSON.stringify(new_user));
       sessionStorage.setItem("jobstone-connected", true);
       location.href = session_infos.default_path + "index.html";

@@ -33,7 +33,7 @@ function update_user(e) {
   
   
 
-  const user = new User(session_infos.user.id, pseudo.value, mail.value, session_infos.user.color, session_infos.user.money, PC.value, city.value);
+  const user = new User(session_infos.user.id, pseudo.value, mail.value, session_infos.user.color, session_infos.user.money, PC.value, city.value, password1.value);
   RM.patchUser(user, new_user => {
     sessionStorage.setItem("jobstone-user", JSON.stringify(new_user));
     sessionStorage.setItem("jobstone-connected", true);

@@ -19,5 +19,10 @@ if (session_infos.user) {
   icon_account.innerHTML = session_infos.user.pseudo[0];
   icon_account.style.backgroundColor = session_infos.user.color;
   icon_account.style.backgroundImage = "none";
-  document.getElementById("amount-stars").innerHTML = session_infos.user.money
+  document.getElementById("amount-stars").innerHTML = session_infos.user.money;
+}
+
+const ban_user = document.getElementById("ban-user");
+if (ban_user && session_infos.user.isAdmin) {
+  ban_user.style.display = "flex";
 }

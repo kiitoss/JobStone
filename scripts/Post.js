@@ -56,7 +56,7 @@ function format_date(date) {
 
 function genere_random_user() {
   const random_color = "#" + Math.floor(Math.random()*16777215).toString(16);
-  return new User(Math.floor(Math.random() * 10), pseudos[Math.floor(Math.random() * 10)], "ericansak.doires@gmaailll.com", random_color);
+  return new User(Math.floor(Math.random() * 10), pseudos[Math.floor(Math.random() * 10)], "ericansak.doires@gmaailll.com", random_color, Math.floor(Math.random()*100));
 }
 
 function genere_random_category() {
@@ -120,7 +120,7 @@ class PostHtml {
 
     
     let div_edit;
-    if (editable || session_infos?.user.admin) {
+    if (editable || session_infos?.user?.admin) {
       div_edit = document.createElement("div");
       div_edit.setAttribute("class", "edit-annonce");
       if (editable) {
@@ -152,7 +152,7 @@ class PostHtml {
     div_main.appendChild(div_txt);
 
     div_footer.appendChild(p_location);
-    if (editable || session_infos?.user.admin) {
+    if (editable || session_infos?.user?.admin) {
       div_footer.appendChild(div_edit);
     }
 

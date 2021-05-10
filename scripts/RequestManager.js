@@ -22,7 +22,7 @@ class Post {
 }
 
 class User {
-  constructor(id, pseudo, mail, color, money, postal_code, city, isAdmin=0) {
+  constructor(id, pseudo, mail, color, money, postal_code, city, password, isAdmin=0) {
     this.id = id;
     this.pseudo = pseudo;;
     this.mail = mail;
@@ -31,6 +31,7 @@ class User {
     this.postal_code = postal_code;
     this.city = city;
     this.isAdmin = isAdmin;
+    this.password = password;
   }
 }
 
@@ -75,7 +76,7 @@ function format_date(date) {
 
 function generate_random_user() {
   const random_color = "#" + Math.floor(Math.random()*16777215).toString(16);
-  return new User(id_user++, PSE[Math.floor(Math.random() * 10)], "ericansak.doires@gmaailll.com", random_color, Math.floor(Math.random() * 100), Math.floor(Math.random() * 90) + 10, CI[Math.floor(Math.random() * 10)]);
+  return new User(id_user++, PSE[Math.floor(Math.random() * 10)], "ericansak.doires@gmaailll.com", random_color, Math.floor(Math.random() * 100), Math.floor(Math.random() * 90) + 10, CI[Math.floor(Math.random() * 10)], Math.floor(Math.random() * 100));
 }
 
 function generate_random_category() {
@@ -227,7 +228,7 @@ class RequestManagerLocal {
 
   connect(mail, password, callback) {
     if (mail == "test@test.com" && password == "test") {
-      this.getUserById(1, user => callback(user));
+      this.getUserById(1, user => {user.isAdmin = 1; callback(user)});
     } else {
       callback(null);
     }
