@@ -214,6 +214,7 @@ function remove_post(event, idPost) {
 
 const onclick_delete = (e, idPost) => remove_post(e, idPost);
 
+
 function main() {
   if (session_infos.user) {
     const icon_account = document.getElementById("profile-icon");

@@ -21,10 +21,36 @@ function generate_li_detail_html(icon, text) {
   return li_detail;
 }
 
-function update_modal(post, owner, category) {
+function update_modal(post, owner, category, appliers_id) {
   document.getElementById("service-date").innerHTML = post.datePublication;
   document.getElementById("title-service").innerHTML = post.title;
   document.getElementById("service-description").innerHTML = post.description;
+
+  let applied = false;
+  for (let i=0; i<appliers_id.length; i++) {
+    if (session_infos?.user?.id == appliers_id[i]) {
+      applied = true;
+      break;
+    }
+  }
+  const candidate_btn = document.getElementById("candidate-btn");
+  candidate_btn.innerHTML = applied ? "Suppr Candiature" : "Candidater !";
+  candidate_btn.onclick = () => {
+    if (applied) {
+      RM.removeApplied(post.id, session_infos.user.id, () => {
+        location.reload();
+      })
+    } else {
+      if (session_infos?.user) {
+        RM.postApplied({idPost: post.id, idUser: session_infos.user.id}, () => {
+          location.reload();
+        })
+      } else {
+        close_service_modal();
+        document.getElementById("ask-service-modal").style.display = "block";
+      }
+    }
+  }
 
   const service_details = document.getElementById("service-details");
   service_details.innerHTML = "";
@@ -51,7 +77,9 @@ function open_service_modal(idPost) {
   RM.getPostById(idPost, post => {
     RM.getUserById(post.idOwner, owner => {
       RM.getCategoryById(post.idCategory, category => {
-        update_modal(post, owner, category);
+        RM.getApplierIdByPost(idPost, appliers_id => {
+          update_modal(post, owner, category, appliers_id);
+        })
       })
     })
   })

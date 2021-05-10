@@ -292,4 +292,20 @@ class RequestManagerLocal {
   removeUserById(idUser, callback) {
     callback();
   }
+
+  removeApplied(idPost, idUser, callback) {
+    callback();
+  }
+
+  postApplied(apply, callback) {
+    callback();
+  }
+
+  getApplierIdByPost(idPost, callback) {
+    this.getAllUsers((users) => {
+      let id_appliers = [];
+      users.forEach(user => id_appliers.push(user.id));
+      callback(id_appliers);
+    });
+  }
 }
