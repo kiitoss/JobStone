@@ -69,7 +69,7 @@ function genere_random_post() {
 
 
 class PostHtml {
-  constructor(post, owner, category, editable=false, onclick_edit, onclick_delete) {
+  constructor(post, owner, category, onclick_delete, editable=false, onclick_edit) {
     let path = session_infos.default_path;
 
     this.htmlObject = document.createElement("div");
@@ -120,18 +120,19 @@ class PostHtml {
 
     
     let div_edit;
-    if (editable) {
+    if (editable || session_infos?.user.admin) {
       div_edit = document.createElement("div");
       div_edit.setAttribute("class", "edit-annonce");
-
-      let btn_modify = document.createElement("button");
-      btn_modify.setAttribute("class", "edit_btn");
-      btn_modify.addEventListener('click', function(e){
-        onclick_edit(e, post);
-      });
-      btn_modify.setAttribute("onclick", onclick_edit);
-      btn_modify.innerHTML = "Modifier";
-
+      if (editable) {
+        let btn_modify = document.createElement("button");
+        btn_modify.setAttribute("class", "edit_btn");
+        btn_modify.addEventListener('click', function(e){
+          onclick_edit(e, post);
+        });
+        btn_modify.setAttribute("onclick", onclick_edit);
+        btn_modify.innerHTML = "Modifier";
+        div_edit.appendChild(btn_modify);
+      }
       let btn_remove = document.createElement("button");
       btn_remove.setAttribute("class", "remove_btn");
       btn_remove.addEventListener('click', function(e){
@@ -139,7 +140,7 @@ class PostHtml {
       });
       btn_remove.innerHTML = "Supprimer";
 
-      div_edit.appendChild(btn_modify);
+      
       div_edit.appendChild(btn_remove);
     }
 
@@ -151,7 +152,7 @@ class PostHtml {
     div_main.appendChild(div_txt);
 
     div_footer.appendChild(p_location);
-    if (editable) {
+    if (editable || session_infos?.user.admin) {
       div_footer.appendChild(div_edit);
     }
 

@@ -1,41 +1,4 @@
 
-/*Button*/
-.post{
-  margin: 20px auto;
-}
-.edit-annonce{
-  margin: 0 23px auto auto; 
-}
-.post-footer{
-  display:flex;
-}
-
-.edit_btn{
-  border: 1px solid dodgerblue;
-  padding: 0 15px;
-  color: dodgerblue;
-  border-radius:10%;
-  opacity: 0.9;
-  font-weight:bold;
-}
-.remove_btn{
-  border: 1px solid #f3172d;
-  padding: 0 15px;
-  color:#f3172d;
-  border-radius:10%;
-  opacity: 0.9;
-  font-weight:bold;
-}
-
-.remove_btn:hover{
-  opacity: 1;
-  background-color:#ffc8c8;
-}
- 
- .edit_btn:hover{
-  opacity: 1;
-  background-color:#cfcfff;
-}
 
 
 /**/

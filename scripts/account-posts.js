@@ -150,7 +150,7 @@ function update_all_account_posts() {
   RM.getAllPostsByUser(session_infos.user.id, posts => {
     posts.forEach(post => {
       RM.getCategoryById(post.idCategory, category => {
-        let new_post = new PostHtml(post, session_infos.user, category, 1, onclick_edit, onclick_delete);
+        let new_post = new PostHtml(post, session_infos.user, category, onclick_delete, 1, onclick_edit);
         new_post.htmlObject.onclick = () => open_appliers_modal();
         list_posts.appendChild(new_post.htmlObject);
       })

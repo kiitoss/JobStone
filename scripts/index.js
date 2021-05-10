@@ -55,7 +55,7 @@ function update_all_posts() {
     posts.forEach(post => {
       RM.getUserById(post.idOwner, owner => {
         RM.getCategoryById(post.idCategory, category => {
-          list_posts.appendChild(new PostHtml(post, owner, category, 0).htmlObject);
+          list_posts.appendChild(new PostHtml(post, owner, category, onclick_delete, 0).htmlObject);
         })
       })
     })
@@ -68,7 +68,7 @@ function update_all_posts_with_category(idCategory) {
     RM.getAllPostsByCategory(idCategory, posts => {
       posts.forEach(post => {
         RM.getUserById(post.idOwner, owner => {
-          list_posts.appendChild(new PostHtml(post, owner, category, 0).htmlObject);
+          list_posts.appendChild(new PostHtml(post, owner, category, onclick_delete, 0).htmlObject);
         })
       })
     })
@@ -81,7 +81,7 @@ function update_all_posts_with_city(value_and_city) {
     posts.forEach(post => {
       RM.getUserById(post.idOwner, owner => {
         RM.getCategoryById(post.idCategory, category => {
-          list_posts.appendChild(new PostHtml(post, owner, category, 0).htmlObject);
+          list_posts.appendChild(new PostHtml(post, owner, category, onclick_delete, 0).htmlObject);
         })
       })
     })
@@ -159,7 +159,7 @@ function search_posts() {
     RM.getAllPostsByCategoryAndCity({idCategory: idCategory, city: city, PC: pc}, posts => {
       posts.forEach(post => {
         RM.getUserById(post.idOwner, owner => {
-          list_posts.appendChild(new PostHtml(post, owner, category, 0).htmlObject);
+          list_posts.appendChild(new PostHtml(post, owner, category, onclick_delete, 0).htmlObject);
         })
       })
     })
@@ -207,6 +207,12 @@ const update_input_category = () => {
   });
 }
 
+function remove_post(event, idPost) {
+  RM.removePostById(idPost, () => window.location.reload());
+  event.stopPropagation();
+}
+
+const onclick_delete = (e, idPost) => remove_post(e, idPost);
 
 function main() {
   if (session_infos.user) {
