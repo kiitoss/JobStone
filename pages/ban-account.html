@@ -2,14 +2,18 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles/general-style.css">
+  <link rel="stylesheet" href="../styles/index/general.css">
+  <!-- <link rel="stylesheet" href="../styles/index/computer.css"> -->
 	<link rel="stylesheet" href="../styles/general-style.css">
-  <link rel="stylesheet" href="../styles/account-home/general.css">
+  <link rel="stylesheet" href="../styles/ban-account/general.css">
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
 
 	<script type="text/javascript" src="../scripts/RequestManager.js"></script>
 	<script type="text/javascript" src="../scripts/session-manager.js"></script>
 	<script type="text/javascript" src="../scripts/account.js" defer></script>
+  <script type="text/javascript" src="../scripts/ban-account.js" defer></script>
   <title>Job'Stone</title>
 </head>
 <body>
@@ -18,16 +22,28 @@
 		<a href="../index.html"><button id="ask-service">Accueil</button></a>
 		<h1 id="main-title">Job'Stone</h1>
 		<h2 id="sub-title">Let's share the best !</h2>
-		<button id="profile-icon"></button>
+		<button id="profile-icon" onclick="account_btn_clicked()"></button>
 		<div id="user-stars">
       <p id="amount-stars">0</p>
       <img id="star_dark" src="../res/icons/star_dark.svg" alt="iconde d'étoile">
     </div>
 	</header>
 	
-	<hr class="hr-form">
+  <div id=search-bar>
+    <div id="search-bar-user" class="search-bar-input-container">
+      <input id="search-bar-input" class="search-bar-input" placeholder="pseudo" onchange="update_list_users()" onfocus="update_sarch_bar_extension()" oninput="update_sarch_bar_extension()">
+      <ul id="search-bar-extension-user" class="search-bar-input-extension"></ul>
+    </div>
+    <img id="search-icon" src="../res/icons/search.svg" alt="icone de recherche" onclick="update_list_users()">
+  </div>
 
-  
+  <div id="list-users">
+    <div class="user-div">
+      <button class="remove-btn">Supprimer</button>
+      <p class="user-pseudo">Antoine</p>
+      <button class="admin-btn">Passer admin</button>
+    </div>
+  </div>  
 </body>
 
 </html>

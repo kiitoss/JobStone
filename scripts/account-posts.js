@@ -145,7 +145,7 @@ function update_all_account_posts() {
   const onclick_edit = (e, post) => open_edit_post_modal(e, post);
   const onclick_delete = (e, idPost) => remove_post(e, idPost);
 
-  if (!session_infos.user) { return;}
+  if (!session_infos.user) { return; }
 
   RM.getAllPostsByUser(session_infos.user.id, posts => {
     posts.forEach(post => {

@@ -273,4 +273,23 @@ class RequestManagerLocal {
     USERS.push(user);
     callback(user);
   }
+
+  getAllUsersWithValue(value, callback) {
+    let list_users = [];
+    this.getAllUsers(users => {
+      users.forEach(user => {
+        if (value.length > 0 && !user.pseudo.toLowerCase().includes(value)) {
+          return;
+        }
+        if (list_users.indexOf(user) == -1) {
+          list_users.push(user);
+        }
+      })
+      callback(list_users);
+    }) 
+  }
+
+  removeUserById(idUser, callback) {
+    callback();
+  }
 }
