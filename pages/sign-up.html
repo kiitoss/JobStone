@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 	<link rel="stylesheet" href="../styles/general-style.css">
-  <link rel="stylesheet" href="../styles/sign-up/general.css">
+  <link rel="stylesheet" href="../styles/profile-form.css">
 	<link rel="stylesheet" href="../styles/sign-in-modal.css">
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
 <body>
 
 	<header>
-    <button id="ask-service" onclick="ask_service()">demander un service</button>
+    <a href="../index.html"><button id="ask-service">Accueil</button></a>
     <h1 id="main-title">Job'Stone</h1>
     <h2 id="sub-title">Let's share the best !</h2>
     <button onclick="account_btn_clicked(); open_sign_in_modal()" id="profile-icon" ></button>
@@ -32,7 +32,7 @@
 	<div class="form-content">
 		
 		<form action="#">
-			<div class="container sign-up">
+			<div class="container">
 				<h1>Inscription</h1>
 				<hr class="hr-form">
 				<div class="header-information">
@@ -64,11 +64,11 @@
 
 				<hr class = "hr-form">
 		
-				<p id="incorrect-sign-up"></p>
+				<p id="incorrect-profile-form"></p>
 
-				<button type="submit" class="signup-btn" id="sign-up-validation">Inscription</button>
+				<button type="submit" class="profile-form-btn" id="sign-up-validation">Inscription</button>
 		  
-				<div class="signup">
+				<div class="profile-form">
 					<p>Vous avez déjà un compte ? <a onclick="open_sign_in_modal()" class="sign-in-btn">Connexion</a>.</p>
 				</div>
 		  </div>

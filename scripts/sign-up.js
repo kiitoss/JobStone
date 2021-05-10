@@ -1,5 +1,5 @@
 const sign_up_validation = document.getElementById("sign-up-validation");
-const incorrect_sign_up = document.getElementById("incorrect-sign-up");
+const incorrect_sign_up = document.getElementById("incorrect-profile-form");
 
 function sign_up(e) {
   const pseudo = document.getElementById("pseudo").value;
@@ -7,7 +7,7 @@ function sign_up(e) {
   const PC = document.getElementById("postal-code").value
   const city = document.getElementById("city").value;
   const password1 = document.getElementById("password-1").value;
-  const password2 = document.getElementById("password-2").value
+  const password2 = document.getElementById("password-2").value;
 
   if (!pseudo || !mail || !PC || !city || !password1 || !password2) {
     return;
@@ -16,7 +16,6 @@ function sign_up(e) {
   e.preventDefault();
 
   if (password1 != password2) {
-    console.log(password1, password2);
     incorrect_sign_up.innerHTML = "les mots de passes doivent être identiques !";
     incorrect_sign_up.style.display = "block";
     setTimeout(() => { incorrect_sign_up.style.display = "none"; }, 1000);
@@ -30,7 +29,7 @@ function sign_up(e) {
       setTimeout(() => { incorrect_sign_up.style.display = "none"; }, 1000);
       return;
     }
-    RM.createNewUser(new User(null, pseudo, mail, "#" + Math.floor(Math.random()*16777215).toString(16), 1000), new_user => {
+    RM.createNewUser(new User(null, pseudo, mail, "#" + Math.floor(Math.random()*16777215).toString(16), 1000, 69, PC, city), new_user => {
       sessionStorage.setItem("jobstone-user", JSON.stringify(new_user));
       sessionStorage.setItem("jobstone-connected", true);
       location.href = session_infos.default_path + "index.html";

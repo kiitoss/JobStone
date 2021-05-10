@@ -30,7 +30,7 @@ input:focus {
   background-color: #ccc;
 }
 
-.signup-btn {
+.profile-form-btn {
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
@@ -41,7 +41,7 @@ input:focus {
   opacity: 0.9;
 }
 
-.signup-btn:hover {
+.profile-form-btn:hover {
   opacity: 1;
 }
 
@@ -50,7 +50,7 @@ a{
   color: dodgerblue;
 }
 
-.signup {
+.profile-form {
   text-align: center;
   margin-top:20px;
   margin-bottom:20px;
@@ -74,7 +74,7 @@ a{
 }
 
 
-#incorrect-sign-up {
+#incorrect-profile-form {
   color: red;
   text-align: center;
   font-size: 20px;

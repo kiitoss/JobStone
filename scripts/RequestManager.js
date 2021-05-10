@@ -22,12 +22,15 @@ class Post {
 }
 
 class User {
-  constructor(id, pseudo, mail, color, money) {
+  constructor(id, pseudo, mail, color, money, postal_code, city, isAdmin=0) {
     this.id = id;
     this.pseudo = pseudo;;
     this.mail = mail;
     this.color = color;
     this.money = money;
+    this.postal_code = postal_code;
+    this.city = city;
+    this.isAdmin = isAdmin;
   }
 }
 
@@ -72,7 +75,7 @@ function format_date(date) {
 
 function generate_random_user() {
   const random_color = "#" + Math.floor(Math.random()*16777215).toString(16);
-  return new User(id_user++, PSE[Math.floor(Math.random() * 10)], "ericansak.doires@gmaailll.com", random_color, Math.floor(Math.random() * 100));
+  return new User(id_user++, PSE[Math.floor(Math.random() * 10)], "ericansak.doires@gmaailll.com", random_color, Math.floor(Math.random() * 100), Math.floor(Math.random() * 90) + 10, CI[Math.floor(Math.random() * 10)]);
 }
 
 function generate_random_category() {
@@ -251,7 +254,7 @@ class RequestManagerLocal {
         break;
       }
     }
-    callback();
+    callback(user);
   }
 
   getUserByPseudo(pseudo, callback) {

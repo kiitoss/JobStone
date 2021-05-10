@@ -3,11 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../styles/general-style.css">
-		<link rel="stylesheet" href="../styles/account-setting/general.css">
+		<link rel="stylesheet" href="../styles/profile-form.css">
 		<link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
 		<title>Job'Stone</title>
-		<script type="text/javascript" src="../scripts/session-manager.js" defer></script>
+		<script type="text/javascript" src="../scripts/RequestManager.js"></script>
+		<script type="text/javascript" src="../scripts/session-manager.js"></script>
+		<script type="text/javascript" src="../scripts/account.js" defer></script>
+		<script type="text/javascript" src="../scripts/account-setting.js" defer></script>
 	</head>
 	<body>
 
@@ -16,7 +19,7 @@
 			<a href="../index.html"><button id="ask-service">Accueil</button></a>
 			<h1 id="main-title">Job'Stone</h1>
 			<h2 id="sub-title">Let's share the best !</h2>
-			<a href="./account-home.html"><button id="profile-icon" >Mon Compte <button></a>
+			<button onclick="account_btn_clicked(); open_sign_in_modal()" id="profile-icon" ></button>
 			<div id="user-stars">
 				<p id="amount-stars">0</p>
 				<img id="star_dark" src="../res/icons/star_dark.svg" alt="iconde d'étoile">
@@ -28,75 +31,43 @@
 			
 		<div class="form-content">
 			<form action="#">
-				<div class="container service-form">
-					<h1>Paramètres</h1>
-					<p>Modifier les paramètres de votre compte</p>
+				<div class="container">
+					<h1>Modification du profil</h1>
 					<hr class="hr-form">
-					
-					 
-					<label><b>Civilité</b></label><br>
-					<div class="gender">
-						<input type="radio" id="man" name="gender" value="man" checked>
-						<label>Monsieur</label>
-						<input type="radio" id="woman" name="gender" value="woman">
-						<label>Madame</label>
-					</div>
-					<br>
-
 					<div class="header-information">
 						<div class="row-information">
-							<div class="lastname">
-								<label><b>Nom</b></label><br>
-								<input type="text" placeholder="Nom" id="lastname" required><br>
-							</div>
-							
-							<div class="firstname">
-								<label><b>Prénom</b></label><br>
-								<input type="text" placeholder="Prénom" id="firstname" required><br>
-							</div>
-						</div>
-
-		
+						<label><b>Nom d'utilisateur</b></label><br>
+						<input type="text" placeholder="Nom d'utilisateur" id="pseudo" required><br>
+						
+						
 						<div class="row-information">
-							<div class="birth-date">
-								<label><b>Date de Naissance</b></label>
-								<input type="date" placeholder="Date de Naissance" id="birth-date">
+							<div class="mail">
+								<label><b>Email</b></label><br>
+								<input type="text" placeholder="Email" id="mail" required>
 							</div>
-							<!-- <div class="birth-date"> 
-							</div> -->
-							
-						</div>
-					</div>
-					<br>
-					<label><b>Contact</b></label>
-			
-					<div class="contact row-information">
-						<div class="phone-number">
-							<label><b>Téléphone</b><label>
-							<input type="number" placeholder="Num Téléphone" id="phone-number">
 						</div>
 						
-						<div class="mail">
-							<label><b>Email</b></label><br>
-							<input type="text" placeholder="Entrer Email" id="email" required>
+						<label><b>Adresse<b></label>
+						<div class="location">
+							<input type="number" placeholder="Code postale" id="postal-code" required>
+							<input type="text" placeholder="Ville" id="city" required>
 						</div>
+	
+						<div class="passwords">
+							<label ><b>Mot de passe</b></label><br>
+							<input type="password" placeholder="Mot de passe" id="password-1" required><br>
+							<label ><b>Confirmer le mot de passe</b></label>
+							<input type="password" placeholder="Confirmation mot de passe" id="password-2" required>
+						</div>					
 					</div>
-						
-					
-					
-					<br>
-					
-					<label><b>Adresse<b></label>
-					<div class="location">
-						<input type="number" placeholder="Code postale" id="code-postal" required>
-						<input type="text" placeholder="Ville" id="city" required>
-						<input type="text" placeholder="Rue" id="street" required>
-					</div>
+	
+					<hr class = "hr-form">
 			
-					<button type="submit" class="submit-btn">Enregistrer les modifications</button>
+					<p id="incorrect-profile-form"></p>
+	
+					<button type="submit" class="profile-form-btn" id="account-setting-validation">Mettre à jour</button>
 				</div>
-			  
-			</form>			
+			</form>		
 		</div>
 
 	</body>
