@@ -8,21 +8,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
   <title>Job'Stone</title>
-	<script type="text/javascript" src="../scripts/session-manager.js" defer></script>
+	<script type="text/javascript" src="../scripts/RequestManager.js"></script>
+	<script type="text/javascript" src="../scripts/session-manager.js"></script>
+	<script type="text/javascript" src="../scripts/account.js" defer></script>
+	<script type="text/javascript" src="../scripts/sign-up.js" defer></script>
 	<script type="text/javascript" src="../scripts/sign-in-modal.js" defer></script>
 </head>
 <body>
 
 	<header>
-		<a href="../index.html"><button id="ask-service">Accueil</button></a>
-		<h1 id="main-title">Job'Stone</h1>
-		<h2 id="sub-title">Let's share the best !</h2>
-		<button onclick="open_sign_in_modal()" id="profile-icon" >Connexion</button>
-		<div id="user-stars">
+    <button id="ask-service" onclick="ask_service()">demander un service</button>
+    <h1 id="main-title">Job'Stone</h1>
+    <h2 id="sub-title">Let's share the best !</h2>
+    <button onclick="account_btn_clicked(); open_sign_in_modal()" id="profile-icon" ></button>
+    <div id="user-stars">
       <p id="amount-stars">0</p>
       <img id="star_dark" src="../res/icons/star_dark.svg" alt="iconde d'étoile">
     </div>
-	</header>
+  </header>
 	
 	<hr class="hr-form">
 	
@@ -34,54 +37,36 @@
 				<hr class="hr-form">
 				<div class="header-information">
 					<div class="row-information">
-						<div class="lastname">
-							<label><b>Nom</b></label><br>
-							<input type="text" placeholder="Nom" id="lastname" required><br>
-						</div>
-						
-						<div class="firstname">
-							<label><b>Prénom</b></label><br>
-							<input type="text" placeholder="Prénom" id="firstname" required><br>
-						</div>
-					</div>
-					
 					<label><b>Nom d'utilisateur</b></label><br>
 					<input type="text" placeholder="Nom d'utilisateur" id="pseudo" required><br>
 					
 					
 					<div class="row-information">
-						<div class="phone-number">
-							<label><b>Téléphone</b><label>
-							<input type="number" placeholder="Num Téléphone" id="phone-number">
-						</div>
-						
 						<div class="mail">
 							<label><b>Email</b></label><br>
-							<input type="text" placeholder="Entrer Email" id="email" required>
+							<input type="text" placeholder="Email" id="mail" required>
 						</div>
 					</div>
 					
 					<label><b>Adresse<b></label>
 					<div class="location">
-						<input type="number" placeholder="Code postale" id="code-postal" required>
+						<input type="number" placeholder="Code postale" id="postal-code" required>
 						<input type="text" placeholder="Ville" id="city" required>
-						<input type="text" placeholder="Rue" id="street" required>
 					</div>
-					
-					
+
+					<div class="passwords">
+						<label ><b>Mot de passe</b></label><br>
+						<input type="password" placeholder="Mot de passe" id="password-1" required><br>
+						<label ><b>Confirmer le mot de passe</b></label>
+						<input type="password" placeholder="Confirmation mot de passe" id="password-2" required>
+					</div>					
 				</div>
 
-				
-				
-				<label ><b>Mot de passe</b></label><br>
-				<input type="password" placeholder="Entrer Mot de passe" id="pswd" required><br>
-
-				<label ><b>Confirmer le mot de passe</b></label>
-				<input type="password" placeholder="Confirmer Mot de passe" id="pswd" required>
-				
 				<hr class = "hr-form">
 		
-				<button type="submit" class="signup-btn">Inscription</button>
+				<p id="incorrect-sign-up"></p>
+
+				<button type="submit" class="signup-btn" id="sign-up-validation">Inscription</button>
 		  
 				<div class="signup">
 					<p>Vous avez déjà un compte ? <a onclick="open_sign_in_modal()" class="sign-in-btn">Connexion</a>.</p>
@@ -92,31 +77,32 @@
 
 
 	<div id="sign-in-modal">
-		<div id="sign-in-modal-content">
-			<span id="sign-in-modal-close">&times;</span>
-			<form action="#">
-				<div class="sign-in-modal-container">
-					<h1>Se connecter</h1>
-					
-					<hr class="hr-form">
+    <div id="sign-in-modal-content">
+      <span id="sign-in-modal-close">&times;</span>
+      <form action="#">
+        <div class="sign-in-modal-container">
+          <h1>Se connecter</h1>
+          
+          <hr class="hr-form">
 
-					<label><b>Email</b></label><br>
-					<input type="text" placeholder="Entrer Email" required><br>
+          <label><b>Email</b></label><br>
+          <input id="input-mail" type="text" placeholder="Entrer Email" required><br>
 
-					<label ><b>Mot de passe</b></label>
-					<input type="password" placeholder="Entrer Mot de passe" required>
+          <label ><b>Mot de passe</b></label>
+          <input id="input-password" type="password" placeholder="Entrer Mot de passe" required>
 
-					<hr class = "hr-form">
-			
-					<button type="submit" id="sign-in-modal-validation" onclick="sign_in_validation('../')">Connexion</button>
-				</div>
-				
-				<div class="sign-in-modal-container sign-up">
-					<p>Vous êtes nouveau ? Créer un compte <a class="sign-up-link" href="sign-up.html">S'inscrire</a>.</p>
-				</div>
-			</form>			
-		</div>
-	</div>
+          <hr class = "hr-form">
+          
+          <button type="submit" id="sign-in-modal-validation">Connexion</button>
+        </div>
+        
+        <div class="sign-in-modal-container sign-up">
+          <p>Vous êtes nouveau ? Créer un compte <a class="sign-up-link" href="./pages/sign-up.html">S'inscrire</a>.</p>
+        </div>
+        <p id="incorrect-log-in">mail ou mot de passe incorrect !</p>
+      </form>			
+    </div>
+  </div>
 
   </body>
  </html>

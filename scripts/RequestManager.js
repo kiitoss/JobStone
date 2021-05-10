@@ -253,4 +253,20 @@ class RequestManagerLocal {
     }
     callback();
   }
+
+  getUserByPseudo(pseudo, callback) {
+    for (let i=0; i<USERS.length; i++) {
+      if (USERS[i].pseudo == pseudo) {
+        callback(USERS[i]);
+        return;
+      }
+    }
+    callback(null);
+  }
+
+  createNewUser(user, callback) {
+    user.id = id_user++;
+    USERS.push(user);
+    callback(user);
+  }
 }

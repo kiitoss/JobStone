@@ -52,7 +52,7 @@
   background-color: #242424;
 }
 
-#sign-in-modal input[type=text], input[type=password] {
+#sign-in-modal input[type=text], #sign-in-modal input[type=password] {
   width: 90%;
   padding: 15px;
   margin: 5px 0 22px 0;
