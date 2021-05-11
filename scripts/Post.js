@@ -75,6 +75,10 @@ class PostHtml {
     this.htmlObject = document.createElement("div");
     this.htmlObject.setAttribute("class", "post");
 
+    if (editable) {
+      this.htmlObject.setAttribute("class", "post editable-post");
+    }
+
     let p_date = document.createElement("p");
     p_date.innerHTML = post.datePublication;
     p_date.setAttribute("class", "date");
@@ -120,7 +124,7 @@ class PostHtml {
 
     
     let div_edit;
-    if (editable || session_infos?.user?.admin) {
+    if (editable || session_infos?.user?.isAdmin) {
       div_edit = document.createElement("div");
       div_edit.setAttribute("class", "edit-annonce");
       if (editable) {
@@ -152,7 +156,7 @@ class PostHtml {
     div_main.appendChild(div_txt);
 
     div_footer.appendChild(p_location);
-    if (editable || session_infos?.user?.admin) {
+    if (editable || session_infos?.user?.isAdmin) {
       div_footer.appendChild(div_edit);
     }
 

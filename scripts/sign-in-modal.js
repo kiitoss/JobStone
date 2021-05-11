@@ -28,7 +28,7 @@ function sign_in_validation(e) {
     }
 
     close_sign_in_modal();
-
+    
     sessionStorage.setItem("jobstone-user", JSON.stringify(user));
     sessionStorage.setItem("jobstone-connected", true);
 

@@ -169,8 +169,8 @@ header {
 /* POSTS */
 
 /*Button*/
-.post{
-  margin: 20px auto;
+.editable-post{
+  margin: 20px auto !important;
 }
 .edit-annonce{
   margin: 0 23px auto auto; 
