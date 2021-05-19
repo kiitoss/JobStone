@@ -7,15 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
 
-	<script type="text/javascript" src="../scripts/RequestManager.js"></script>
-	<script type="text/javascript" src="../scripts/session-manager.js"></script>
+	<script type="text/javascript" src="../scripts/classes/Session.js"></script>
+	<script type="text/javascript" src="../scripts/page-validation.js"></script>
+	<script type="text/javascript" src="../scripts/classes/RequestManager.js"></script>
 	<script type="text/javascript" src="../scripts/account.js" defer></script>
   <title>Job'Stone</title>
 </head>
 <body>
 
 	<header>
-		<a href="../index.html"><button id="ask-service">Accueil</button></a>
+		<a href="../index.html"><button id="home-btn">Accueil</button></a>
 		<h1 id="main-title">Job'Stone</h1>
 		<h2 id="sub-title">Let's share the best !</h2>
 		<button id="profile-icon"></button>
@@ -47,8 +48,8 @@
 					</a>
 				</div>
 
-				<div class="main-row-content" id="ban-user">
-					<a class="row-element" href="ban-account.html">
+				<div class="main-row-content" id="admin-page">
+					<a class="row-element" href="admin-page.html">
 						<div class="element-content">	
 							<h3>Gestion utilisateurs</h3>
 							<p>Bannir ou changer les droits des utilisateurs</p>

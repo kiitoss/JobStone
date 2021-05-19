@@ -1,3 +1,5 @@
+const RM = new RequestManager();
+
 const list_users = document.getElementById("list-users");
 const search_bar = document.getElementById("search-bar-input");
 const search_bar_extension = document.getElementById("search-bar-extension-user");
@@ -9,9 +11,7 @@ function append_user_to_html(user) {
   const remove_btn = document.createElement("button");
   remove_btn.setAttribute("class", "remove-btn");
   remove_btn.innerHTML = "Supprimer";
-  remove_btn.onclick = () => {
-    RM.removeUserById(user.id, () => location.reload());
-  }
+  remove_btn.onclick = () => RM.removeUserById(user.id, () => location.reload());
 
   const user_pseudo = document.createElement("p");
   user_pseudo.setAttribute("class", "user-pseudo");
@@ -19,9 +19,9 @@ function append_user_to_html(user) {
 
   const admin_btn = document.createElement("button");
   admin_btn.setAttribute("class", "admin-btn");
-  admin_btn.innerHTML = user.isAdmin ? "Suppr admin" : "Passer admin";
+  admin_btn.innerHTML = user.isAdmin == 1 ? "Suppr admin" : "Passer admin";
   admin_btn.onclick = () => {
-    user.isAdmin = !user.isAdmin;
+    user.isAdmin = !parseInt(user.isAdmin);
     RM.patchUser(user, () => location.reload());
   }
 
@@ -37,7 +37,7 @@ function update_list_users() {
   if (!value) {
     RM.getAllUsers(users => {
       users.forEach(user => {
-        if (user.id == session_infos.user.id) {return;}
+        if (user.id == session.user.id) {return;}
         append_user_to_html(user);
       })
     })
@@ -46,7 +46,7 @@ function update_list_users() {
 
   RM.getAllUsersWithValue(value.toString(), users => {
     users.forEach(user => {
-      if (user.id == session_infos.user.id) {return;}
+      if (user.id == session.user.id) {return;}
       append_user_to_html(user);
     })
   })
@@ -80,7 +80,7 @@ function update_sarch_bar_extension() {
   if (!value) {
     RM.getAllUsers(users => {
       users.forEach(user => {
-        if (user.id == session_infos.user.id) {return;}
+        if (user.id == session.user.id) {return;}
         generate_new_user_extension(user);
       })
     })
@@ -89,12 +89,11 @@ function update_sarch_bar_extension() {
 
   RM.getAllUsersWithValue(value.toString(), users => {
     users.forEach(user => {
-      if (user.id == session_infos.user.id) {return;}
+      if (user.id == session.user.id) {return;}
       generate_new_user_extension(user);
     })
   })
 }
-
 
 update_sarch_bar_extension();
 update_list_users();

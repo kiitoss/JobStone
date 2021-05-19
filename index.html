@@ -5,22 +5,22 @@
   <link rel="stylesheet" href="styles/general-style.css">
   <link rel="stylesheet" href="styles/index/general.css">
   <link rel="stylesheet" href="styles/index/computer.css">
-  <link rel="stylesheet" href="styles/index/phone.css">
+  <!-- <link rel="stylesheet" href="styles/index/phone.css"> -->
   <link rel="stylesheet" href="styles/sign-in-modal.css">
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
   <title>Job'Stone</title>
   
-  <script type="text/javascript" src="scripts/RequestManager.js"></script>
-  <script type="text/javascript" src="scripts/session-manager.js"></script>
+  <script type="text/javascript" src="scripts/classes/Session.js"></script>
+  <script type="text/javascript" src="scripts/classes/RequestManager.js"></script>
+  <script type="text/javascript" src="scripts/classes/PostHtml.js"></script>
+
   <script type="text/javascript" src="scripts/sign-in-modal.js" defer></script>
-  <script type="text/javascript" src="scripts/Post.js" defer></script>
-  
-  <!-- <script type="text/javascript" src="scripts/ask-service.js" defer></script> -->
   <script type="text/javascript" src="scripts/account.js" defer></script>
-  <!-- <script type="text/javascript" src="scripts/index-post-manager.js" defer></script> -->
-  <script type="text/javascript" src="scripts/service-modal.js" defer></script>
-  <script type="text/javascript" src="scripts/index.js" defer></script>
+  <script type="text/javascript" src="scripts/index/service-modal.js" defer></script>
+  <script type="text/javascript" src="scripts/index/search-bar.js" defer></script>
+  <script type="text/javascript" src="scripts/index/post-manager.js" defer></script>
+  <script type="text/javascript" src="scripts/index/index-main.js" defer></script>
   
 </head>
 <body>
@@ -29,7 +29,7 @@
     <button id="ask-service" onclick="ask_service()">demander un service</button>
     <h1 id="main-title">Job'Stone</h1>
     <h2 id="sub-title">Let's share the best !</h2>
-    <button onclick="account_btn_clicked(); open_sign_in_modal()" id="profile-icon" ></button>
+    <button onclick="account_btn_clicked()" id="profile-icon" ></button>
     <div id="user-stars">
       <p id="amount-stars">0</p>
       <img id="star_dark" src="res/icons/star_dark.svg" alt="iconde d'étoile">
@@ -39,18 +39,19 @@
 	
   <div id=search-bar>
     <div class="search-bar-input-container">
-      <input id="search-bar-category" class="search-bar-input" placeholder="Catégorie">
+      <input id="search-bar-category" class="search-bar-input" placeholder="Catégorie" oninput="update_input_category()" onfocus="update_input_category()">
       <ul id="search-bar-extension-category" class="search-bar-input-extension"></ul>
     </div>
     <div class="search-bar-input-container">
-      <input id="search-bar-city" class="search-bar-input" placeholder="Ville ou CP">
+      <input id="search-bar-city" class="search-bar-input" placeholder="Ville ou CP" oninput="update_input_city()" onfocus="update_input_city()">
       <ul id="search-bar-extension-city" class="search-bar-input-extension">
       </ul>
     </div>
     <img id="search-icon" src="res/icons/search.svg" alt="icone de recherche" onclick="search_posts()">
   </div>
 
-  <img id="hamburger-icon" src="res/icons/hamburger.svg" alt="icone hamburger">
+  <!-- <img id="hamburger-icon" src="res/icons/hamburger.svg" alt="icone hamburger"> -->
+  
   <nav>
     <h2>Liste des services</h2>
     <ul id="list-categories"></ul>
@@ -60,10 +61,10 @@
 
   <div id="service-modal">
     <div id="service">
-      <p id="service-date">27/02 16h04</p>
-      <h1 id="title-service">Recherche programmeur web</h1>
+      <p id="service-date"></p>
+      <h1 id="title-service"></h1>
       <h2>Description</h2>
-      <p id="service-description">"Bonjour, je suis à la recherche d'un programmeur / développeur web pour mon site WordPress. Je l'ai à peine fait, merci !"</p>
+      <p id="service-description"></p>
       
       
       <div id="service-infos">
@@ -80,14 +81,14 @@
           <button id="candidate-btn"></button>
         </div>
       </div>
-      <img id="close-service-btn" src="res/icons/close.svg" alt="iconde de fermeture">
+      <img id="close-service-btn" src="res/icons/close.svg" alt="iconde de fermeture" onclick="close_service_modal()">
     </div>
   </div>
 
 
 	<div id="sign-in-modal">
     <div id="sign-in-modal-content">
-      <span id="sign-in-modal-close">&times;</span>
+      <span id="sign-in-modal-close" onclick="close_sign_in_modal()">&times;</span>
       <form action="#">
         <div class="sign-in-modal-container">
           <h1>Se connecter</h1>
@@ -102,7 +103,7 @@
 
           <hr class = "hr-form">
           
-          <button type="submit" id="sign-in-modal-validation">Connexion</button>
+          <button type="submit" id="sign-in-modal-validation" onclick="sign_in_validation(event)">Connexion</button>
         </div>
         
         <div class="sign-in-modal-container sign-up">
@@ -114,9 +115,9 @@
   </div>
 
 
-  <div id="ask-service-modal">
-    <div id="ask-service-modal-content">
-      <span id="ask-service-modal-close" onclick="close_ask_service_modal()">&times;</span>
+  <div id="error-modal">
+    <div id="error-modal-content">
+      <span id="error-modal-close" onclick="close_error_modal()">&times;</span>
       <p>Vous devez être connecté pour accéder à ce service</p>		
     </div>
   </div>

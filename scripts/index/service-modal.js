@@ -1,9 +1,26 @@
-// const RM = new RequestManagerLocal();
 const service_modal = document.getElementById("service-modal");
-const close_service_btn = document.getElementById("close-service-btn");
+
+function update_apply(applied, post) {
+  if (applied) {
+    RM.removeApply(post.id, session.user.id, () => {
+      location.reload();
+    })
+    return;
+  }
+
+  if (session.user) {
+    RM.postApply({idPost: post.id, idApplier: session.user.id}, () => {
+      location.reload();
+    })
+    return;
+  }
+  
+  close_service_modal();
+  document.getElementById("error-modal").style.display = "block";
+}
 
 function generate_li_detail_html(icon, text) {
-  let path = session_infos.default_path;
+  let path = session.default_path;
 
   const li_detail = document.createElement("li");
   li_detail.setAttribute("class", "service-detail");
@@ -21,36 +38,25 @@ function generate_li_detail_html(icon, text) {
   return li_detail;
 }
 
-function update_modal(post, owner, category, appliers_id) {
+function update_modal(post, owner, category, appliers) {
   document.getElementById("service-date").innerHTML = post.datePublication;
   document.getElementById("title-service").innerHTML = post.title;
+  
   document.getElementById("service-description").innerHTML = post.description;
 
+
+
   let applied = false;
-  for (let i=0; i<appliers_id.length; i++) {
-    if (session_infos?.user?.id == appliers_id[i]) {
+  appliers.forEach(applier => {
+    if (session.user?.id == applier.id) {
       applied = true;
-      break;
+      return;
     }
-  }
+  })
+
   const candidate_btn = document.getElementById("candidate-btn");
   candidate_btn.innerHTML = applied ? "Suppr Candiature" : "Candidater !";
-  candidate_btn.onclick = () => {
-    if (applied) {
-      RM.removeApplied(post.id, session_infos.user.id, () => {
-        location.reload();
-      })
-    } else {
-      if (session_infos?.user) {
-        RM.postApplied({idPost: post.id, idUser: session_infos.user.id}, () => {
-          location.reload();
-        })
-      } else {
-        close_service_modal();
-        document.getElementById("ask-service-modal").style.display = "block";
-      }
-    }
-  }
+  candidate_btn.onclick = () => update_apply(applied, post);
 
   const service_details = document.getElementById("service-details");
   service_details.innerHTML = "";
@@ -63,7 +69,9 @@ function update_modal(post, owner, category, appliers_id) {
   ul_details.appendChild(generate_li_detail_html("location", post.city + "(" + post.postalCode + ")"));
   ul_details.appendChild(generate_li_detail_html("profile", owner.pseudo));
   ul_details.appendChild(generate_li_detail_html("mail", owner.mail));
-  ul_details.appendChild(generate_li_detail_html(category.name, category.name));
+
+  const icon_name = category.name.split(" ").join("").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  ul_details.appendChild(generate_li_detail_html(icon_name, category.name));
   ul_details.appendChild(generate_li_detail_html("calendar", post.startDate));
   ul_details.appendChild(generate_li_detail_html("calendar", post.endDate));
 
@@ -77,8 +85,9 @@ function open_service_modal(idPost) {
   RM.getPostById(idPost, post => {
     RM.getUserById(post.idOwner, owner => {
       RM.getCategoryById(post.idCategory, category => {
-        RM.getApplierIdByPost(idPost, appliers_id => {
-          update_modal(post, owner, category, appliers_id);
+        RM.getAllAppliersByPost(idPost, appliers => {
+          
+          update_modal(post, owner, category, appliers);
         })
       })
     })
@@ -89,5 +98,3 @@ function open_service_modal(idPost) {
 function close_service_modal() {
   service_modal.style.display = "none";
 }
-
-close_service_btn.onclick = () => close_service_modal();

@@ -8,19 +8,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
   <title>Job'Stone</title>
-	<script type="text/javascript" src="../scripts/RequestManager.js"></script>
-	<script type="text/javascript" src="../scripts/session-manager.js"></script>
-	<script type="text/javascript" src="../scripts/account.js" defer></script>
-	<script type="text/javascript" src="../scripts/sign-up.js" defer></script>
+
+	<script type="text/javascript" src="../scripts/classes/Session.js"></script>
+	<script type="text/javascript" src="../scripts/classes/RequestManager.js"></script>
+	<script type="text/javascript" src="../scripts/classes/User.js"></script>
+	<script type="text/javascript" src="../scripts/input-validator.js"></script>
+	
 	<script type="text/javascript" src="../scripts/sign-in-modal.js" defer></script>
+	<script type="text/javascript" src="../scripts/account.js" defer></script>
+	<script type="text/javascript" src="../scripts/sign-up/sign-up-main.js" defer></script>
 </head>
 <body>
 
 	<header>
-    <a href="../index.html"><button id="ask-service">Accueil</button></a>
+    <a href="../index.html"><button id="home-btn">Accueil</button></a>
     <h1 id="main-title">Job'Stone</h1>
     <h2 id="sub-title">Let's share the best !</h2>
-    <button onclick="account_btn_clicked(); open_sign_in_modal()" id="profile-icon" ></button>
+    <button onclick="account_btn_clicked()" id="profile-icon" ></button>
     <div id="user-stars">
       <p id="amount-stars">0</p>
       <img id="star_dark" src="../res/icons/star_dark.svg" alt="iconde d'étoile">
@@ -50,7 +54,7 @@
 					
 					<label><b>Adresse<b></label>
 					<div class="location">
-						<input type="number" placeholder="Code postale" id="postal-code" required>
+						<input type="number" placeholder="Code postale" id="postal-code" minlength="2" maxlength="2" oninput="validate_input_size(this)" onkeydown="validate_input_integrity(event)" required>
 						<input type="text" placeholder="Ville" id="city" required>
 					</div>
 
@@ -66,7 +70,7 @@
 		
 				<p id="incorrect-profile-form"></p>
 
-				<button type="submit" class="profile-form-btn" id="sign-up-validation">Inscription</button>
+				<button type="submit" class="profile-form-btn" id="sign-up-validation" onclick="sign_up(event)">Inscription</button>
 		  
 				<div class="profile-form">
 					<p>Vous avez déjà un compte ? <a onclick="open_sign_in_modal()" class="sign-in-btn">Connexion</a>.</p>
@@ -78,7 +82,7 @@
 
 	<div id="sign-in-modal">
     <div id="sign-in-modal-content">
-      <span id="sign-in-modal-close">&times;</span>
+      <span id="sign-in-modal-close" onclick="close_sign_in_modal()">&times;</span>
       <form action="#">
         <div class="sign-in-modal-container">
           <h1>Se connecter</h1>
@@ -93,11 +97,11 @@
 
           <hr class = "hr-form">
           
-          <button type="submit" id="sign-in-modal-validation">Connexion</button>
+          <button type="submit" id="sign-in-modal-validation" onclick="sign_in_validation(event)">Connexion</button>
         </div>
         
         <div class="sign-in-modal-container sign-up">
-          <p>Vous êtes nouveau ? Créer un compte <a class="sign-up-link" href="./pages/sign-up.html">S'inscrire</a>.</p>
+          <p>Vous êtes nouveau ? Créer un compte <a class="sign-up-link" href="./sign-up.html">S'inscrire</a>.</p>
         </div>
         <p id="incorrect-log-in">mail ou mot de passe incorrect !</p>
       </form>			

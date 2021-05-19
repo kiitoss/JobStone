@@ -4,16 +4,17 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../styles/general-style.css">
   <link rel="stylesheet" href="../styles/index/general.css">
-  <!-- <link rel="stylesheet" href="../styles/index/computer.css"> -->
 	<link rel="stylesheet" href="../styles/general-style.css">
-  <link rel="stylesheet" href="../styles/ban-account/general.css">
+  <link rel="stylesheet" href="../styles/admin-page/general.css">
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
 
-	<script type="text/javascript" src="../scripts/RequestManager.js"></script>
-	<script type="text/javascript" src="../scripts/session-manager.js"></script>
+  <script type="text/javascript" src="../scripts/classes/Session.js"></script>
+  <script type="text/javascript" src="../scripts/page-validation.js"></script>
+	<script type="text/javascript" src="../scripts/classes/RequestManager.js"></script>
+	
 	<script type="text/javascript" src="../scripts/account.js" defer></script>
-  <script type="text/javascript" src="../scripts/ban-account.js" defer></script>
+  <script type="text/javascript" src="../scripts/admin-page/admin-page-main.js" defer></script>
   <title>Job'Stone</title>
 </head>
 <body>
@@ -37,13 +38,7 @@
     <img id="search-icon" src="../res/icons/search.svg" alt="icone de recherche" onclick="update_list_users()">
   </div>
 
-  <div id="list-users">
-    <div class="user-div">
-      <button class="remove-btn">Supprimer</button>
-      <p class="user-pseudo">Antoine</p>
-      <button class="admin-btn">Passer admin</button>
-    </div>
-  </div>  
+  <div id="list-users"></div>  
 </body>
 
 </html>

@@ -1,23 +1,6 @@
+const RM = new RequestManager();
+
 const dropdown_category = document.getElementById("dropdown-category");
-
-function switch_format_date(date_str) {
-  const date_str_split = date_str.split("-");
-  return [date_str_split[2], date_str_split[1], date_str_split[0]].join("/");
-}
-
-function format_date(date) {
-  var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-
-  if (month.length < 2) 
-      month = '0' + month;
-  if (day.length < 2) 
-      day = '0' + day;
-
-  return [day, month, year].join('/');
-}
 
 function post_service(e) {
   const title = document.getElementById("title-service").value;
@@ -46,22 +29,34 @@ function post_service(e) {
   const end_date = switch_format_date(end_date_english);
   const publication_date = format_date(new Date());
 
-  const post = new Post(null, session_infos.user.id, publication_date, title, category_id, start_date, end_date, postal_code, city, description, price);
+  const post = {
+    idOwner: session.user.id,
+    datePublication: publication_date,
+    title: title,
+    idCategory: category_id,
+    startDate: start_date,
+    endDate: end_date,
+    postalCode: postal_code,
+    city: city,
+    description: description,
+    price: price
+  }
 
   RM.postPost(post, () => {
-    location.href = session_infos.default_path + "index.html";
+    location.href = session.default_path + "index.html";
   })
 }
 
 
 function update_dropdown_category() {
-  session_infos.categories.forEach(category => {
-    const new_option = document.createElement("option");
-    new_option.setAttribute("id", "dropdown-category-"+category.id);
-    new_option.innerHTML = category.name;
-    dropdown_category.appendChild(new_option);
+  RM.getAllCategories(categories => {
+    categories.forEach(category => {
+      const new_option = document.createElement("option");
+      new_option.setAttribute("id", "dropdown-category-"+category.id);
+      new_option.innerHTML = category.name;
+      dropdown_category.appendChild(new_option);
+    })
   })
 }
 
 update_dropdown_category();
-document.getElementById("ask-service-validation").onclick = (e) => post_service(e);

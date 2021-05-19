@@ -89,7 +89,7 @@ nav > ul > li {
 }
 
 .post:hover{
-box-shadow: 0 0 48px 0 rgb(167,167,167,0.25);
+  box-shadow: 0 0 48px 0 rgb(167,167,167,0.25);
 }
 
 
@@ -187,8 +187,8 @@ box-shadow: 0 0 48px 0 rgb(167,167,167,0.25);
 
 
 
-/* ASK SERVICE MODAL */
-#ask-service-modal {
+/* ERROR MODAL */
+#error-modal {
   display: none; 
   position: fixed; 
   padding-top: 100px; 
@@ -201,7 +201,7 @@ box-shadow: 0 0 48px 0 rgb(167,167,167,0.25);
   background-color: rgba(0,0,0,0.8); 
 }
 
-#ask-service-modal-content{
+#error-modal-content{
   position:relative;
   background-color: #242424;
   margin: auto;
@@ -214,7 +214,7 @@ box-shadow: 0 0 48px 0 rgb(167,167,167,0.25);
 
 }
 
-#ask-service-modal-close {
+#error-modal-close {
   color: #aaaaaa;
   float: right;
   font-size: 35px;

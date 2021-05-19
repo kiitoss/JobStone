@@ -47,7 +47,7 @@ header {
   height: 200px;
 }
 
-#ask-service {
+#ask-service, #home-btn {
   background-color: rgb(234,195,168);
   padding: 10px;
   border-radius: 10px;

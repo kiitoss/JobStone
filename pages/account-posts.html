@@ -11,17 +11,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
   <title>Job'Stone</title>
-	<script type="text/javascript" src="../scripts/RequestManager.js"></script>
-	<script type="text/javascript" src="../scripts/session-manager.js"></script>
+
+	<script type="text/javascript" src="../scripts/classes/Session.js"></script>
+	<script type="text/javascript" src="../scripts/page-validation.js"></script>
+	<script type="text/javascript" src="../scripts/classes/RequestManager.js"></script>
+	<script type="text/javascript" src="../scripts/classes/Post.js"></script>
+	<script type="text/javascript" src="../scripts/classes/PostHtml.js"></script>
+	<script type="text/javascript" src="../scripts/date-manager.js"></script>
+	<script type="text/javascript" src="../scripts/input-validator.js"></script>
+
 	<script type="text/javascript" src="../scripts/account.js" defer></script>
-	<script type="text/javascript" src="../scripts/Post.js" defer></script>
-	
-	<script type="text/javascript" src="../scripts/account-posts.js" defer></script>
+	<script type="text/javascript" src="../scripts/account-posts/appliers-manager.js" defer></script>
+	<script type="text/javascript" src="../scripts/account-posts/post-manager.js" defer></script>
+	<script type="text/javascript" src="../scripts/account-posts/account-posts-main.js" defer></script>
 	</head>
 <body>
 
   <header>
-    <a href="../index.html"><button id="ask-service">Accueil</button></a>
+    <a href="../index.html"><button id="home-btn">Accueil</button></a>
     <h1 id="main-title">Job'Stone</h1>
     <h2 id="sub-title">Let's share the best !</h2>
 		<a href="account-home.html"><button id="profile-icon"></button></a>
@@ -39,7 +46,7 @@
 
   <div id="appliers-modal">
     <div id="appliers-modal-content">
-			<span id="appliers-modal-close" class="close">&times;</span>
+			<span id="appliers-modal-close" class="close" onclick="close_appliers_modal()">&times;</span>
 			<h1>Candidats</h1>
 			<div id="appliers-list">
 			</div>
@@ -48,7 +55,7 @@
 
 	<div id="edit-post-modal" class="modal-edit">
 		<div class="form-content container">
-			<span id="edit-modal-close" class="close">&times;</span>
+			<span id="edit-modal-close" class="close" onclick="close_edit_post_modal()">&times;</span>
 			<form action="#">
 				<div class="service-form">
 					<h1>Mettre à jour une annonce</h1>
@@ -58,7 +65,7 @@
 					
 					
 					<label><b>Titre de l'annonce</b></label><br>
-					<input type="text" placeholder="Titre de l'annonce" id="title-service" required><br>
+					<input type="text" placeholder="Titre de l'annonce" id="title-service" required maxlength="100"><br>
 					
 					<label><b>Catégorie</b></label><br>
 					<div class="search-dropdown">
@@ -71,13 +78,13 @@
 					<label><b>Date de réalisation</b></label><br>
 					<div class="realisation-date">
 						<br><label><h5>Début</h5>
-							<input type="date" placeholder="Date début" id="start-date" required>
+							<input type="date" placeholder="Date début" id="start-date" required max="9999-12-31">
 						</label>
 						
 						<br>
 						
 						<label><h5>Fin</h5>
-							<input type="date" placeholder="Date fin" id="end-date" required>
+							<input type="date" placeholder="Date fin" id="end-date" required max="9999-12-31">
 						</label>
 						
 						<br>
@@ -85,7 +92,7 @@
 					
 					<label><b>Lieu</b></label><br>
 					<div class="location">
-						<input type="number" placeholder="Code postale" id="postal-code" required>
+						<input type="number" placeholder="Code postale" id="postal-code" maxlength="2" oninput="validate_input_size(this)" onkeydown="validate_input_integrity(event)" required>
 						<input type="text" placeholder="Ville" id="city" required>
 					</div>
 
@@ -93,9 +100,9 @@
 						<input type="number" id="price" required>
 					
 					<label><b>Description de l'annonce</b></label><br>
-					<textarea type="message" id="description" rows="6" maxlength="2000" required required></textarea>
+					<textarea type="message" id="description" rows="6" required maxlength="500" ></textarea>
 					
-					<button id="edit-post-validation" type="submit" class="submit-btn">Mettre à jour ma demande</button>
+					<button id="edit-post-validation" type="submit" class="submit-btn" onclick="validate_edit_post(event)">Mettre à jour ma demande</button>
 				</div>
 			  
 			</form>			

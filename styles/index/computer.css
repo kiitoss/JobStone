@@ -1,4 +1,4 @@
-@media (min-aspect-ratio: 1/1) {
+/* @media (min-aspect-ratio: 1/1) { */
   /* ----------------------  SEARCH BAR  ---------------------- */
   #search-bar {
     height: 75px;
@@ -153,4 +153,4 @@
     font-size: 37px;
     border-radius: 25px;
   }
-}
+/* } */

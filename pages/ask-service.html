@@ -3,24 +3,23 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../styles/general-style.css">
-		<link rel="stylesheet" href="../styles/ask-service/general.css">
-		<link rel="stylesheet" href="../styles/sign-in-modal.css">
+		<link rel="stylesheet" href="../styles/new-post.css">
 		<link href="https://fonts.googleapis.com/css2?family=Autour+One&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
 		<title>Job'Stone</title>
-		<script type="text/javascript" src="../scripts/Post.js" defer></script>
-		<script type="text/javascript" src="../scripts/RequestManager.js"></script>
-		<script type="text/javascript" src="../scripts/session-manager.js"></script>
+		<script type="text/javascript" src="../scripts/classes/Session.js"></script>
+		<script type="text/javascript" src="../scripts/page-validation.js"></script>
+		<script type="text/javascript" src="../scripts/classes/RequestManager.js"></script>
+		<script type="text/javascript" src="../scripts/input-validator.js"></script>
+		<script type="text/javascript" src="../scripts/date-manager.js"></script>
 		
-		<!-- <script type="text/javascript" src="../scripts/sign-in-modal.js" defer></script> -->
 		<script type="text/javascript" src="../scripts/account.js" defer></script>
-		<script type="text/javascript" src="../scripts/ask-service.js" defer></script>
+		<script type="text/javascript" src="../scripts/ask-service/ask-service-main.js" defer></script>
 	</head>
 	<body>
 
-
 		<header>
-			<a href="../index.html"><button id="ask-service">Accueil</button></a>
+			<a href="../index.html"><button id="home-btn">Accueil</button></a>
 			<h1 id="main-title">Job'Stone</h1>
 			<h2 id="sub-title">Let's share the best !</h2>
 			<button onclick="account_btn_clicked()" id="profile-icon" ></button>
@@ -39,11 +38,9 @@
 					<h1>Demander un service </h1>
 					<p>De quoi avez vous besoin ?</p><br>
 					<hr class="hr-form">
-					
-					
-					
+
 					<label><b>Titre de l'annonce</b></label><br>
-					<input type="text" placeholder="Titre de l'annonce" id="title-service" required><br>
+					<input type="text" placeholder="Titre de l'annonce" id="title-service" maxlength="100" required><br>
 					
 					<label><b>Catégorie</b></label><br>
 					<div class="search-dropdown">
@@ -56,21 +53,20 @@
 					<label><b>Date de réalisation</b></label><br>
 					<div class="realisation-date">
 						<br><label><h5>Début</h5>
-							<input type="date" placeholder="Date début" id="start-date" required>
+							<input type="date" placeholder="Date début" id="start-date"  max="9999-12-31" required>
 						</label>
 						
 						<br>
 						
 						<label><h5>Fin</h5>
-							<input type="date" placeholder="Date fin" id="end-date" required>
+							<input type="date" placeholder="Date fin" id="end-date" max="9999-12-31" required>
 						</label>
-						
 						<br>
 					</div>
 					
 					<label><b>Lieu</b></label><br>
 					<div class="location">
-						<input type="number" placeholder="Code postale" id="postal-code" required>
+						<input type="number" placeholder="Code postale" id="postal-code" maxlength="2" oninput="validate_input_size(this)" onkeydown="validate_input_integrity(event)" required>
 						<input type="text" placeholder="Ville" id="city" required>
 					</div>
 
@@ -78,39 +74,12 @@
 						<input type="number" id="price" required>
 					
 					<label><b>Description de l'annonce</b></label><br>
-					<textarea type="message" id="description" rows="6" maxlength="2000" required required></textarea>
+					<textarea type="message" id="description" rows="6" maxlength="500" required></textarea>
 					
-					<button id="ask-service-validation" type="submit" class="submit-btn">Poster ma demande</button>
+					<button id="ask-service-validation" type="submit" class="submit-btn" onclick="post_service(event)">Poster ma demande</button>
 				</div>
 			  
 			</form>			
 		</div>
-
-		<!-- <div id="sign-in-modal">
-			<div id="sign-in-modal-content">
-				<span id="sign-in-modal-close">&times;</span>
-				<form action="#">
-					<div class="sign-in-modal-container">
-						<h1>Se connecter</h1>
-						
-						<hr class="hr-form">
-	
-						<label><b>Email</b></label><br>
-						<input type="text" placeholder="Entrer Email" required><br>
-	
-						<label ><b>Mot de passe</b></label>
-						<input type="password" placeholder="Entrer Mot de passe" required>
-	
-						<hr class = "hr-form">
-				
-						<button type="submit" id="sign-in-modal-validation" onclick="sign_in_validation('../')">Connexion</button>
-					</div>
-					
-					<div class="sign-in-modal-container sign-up">
-						<p>Vous êtes nouveau ? Créer un compte <a class="sign-up-link" href="sign-up.html">S'inscrire</a>.</p>
-					</div>
-				</form>			
-			</div>
-		</div> -->
 	</body>
 </html>
