@@ -53,13 +53,13 @@
 					<label><b>Date de réalisation</b></label><br>
 					<div class="realisation-date">
 						<br><label><h5>Début</h5>
-							<input type="date" placeholder="Date début" id="start-date"  max="9999-12-31" required>
+							<input type="date" placeholder="Date début" id="start-date" required max="9999-12-31">
 						</label>
 						
 						<br>
 						
 						<label><h5>Fin</h5>
-							<input type="date" placeholder="Date fin" id="end-date" max="9999-12-31" required>
+							<input type="date" placeholder="Date fin" id="end-date" required max="9999-12-31">
 						</label>
 						<br>
 					</div>
@@ -74,7 +74,7 @@
 						<input type="number" id="price" required>
 					
 					<label><b>Description de l'annonce</b></label><br>
-					<textarea type="message" id="description" rows="6" maxlength="500" required></textarea>
+					<textarea type="message" id="description" rows="6" required maxlength="500"></textarea>
 					
 					<button id="ask-service-validation" type="submit" class="submit-btn" onclick="post_service(event)">Poster ma demande</button>
 				</div>
