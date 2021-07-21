@@ -4,7 +4,7 @@ Job’Stone est un site web d’entraide entre particuliers inspiré du célèbr
 
 Comme ce dernier, le site web nouvellement créé permet à des utilisateurs de poster des annonces ou de candidater à celles-ci dans un esprit d’entraide collectif, basé sur une idéologiesimple : offrir de son temps.
 
-![Page d'accueil de JobStone](res/readme-img/home.png)
+![Page d'accueil de JobStone](./res/readme-img/home.png)
 
 ## Architecture
 Le projet est constitué de cinq dossiers principaux :
@@ -16,7 +16,7 @@ Le projet est constitué de cinq dossiers principaux :
 
 ## Base de données
 La base de données est organisé en quatre tables, USER, POST, CATEGORY et APPLY.
-![Relations BDD](res/readme-img/relations.png)
+![Relations BDD](./res/readme-img/relations.png)
 
 ## Déploiement du site ?
 Le site n'est malheureusement pas déployé, les accès à la base de données sont donc impossibles actuellement. L'utilisation du site en est forcément restreinte.
